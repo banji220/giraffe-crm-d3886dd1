@@ -92,8 +92,8 @@ function Hero() {
   return (
     <section className="border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
-          <div className="lg:col-span-7 space-y-8">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 label-mono text-xs">
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
@@ -107,7 +107,7 @@ function Hero() {
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
                 href={APP_URL}
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
@@ -306,7 +306,7 @@ function HeatmapSection() {
           ].map((s) => (
             <div key={s.l} className="bg-background p-4 sm:p-6">
               <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl tabular-nums whitespace-nowrap">{s.n}</div>
-              <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-2">{s.l}</div>
+              <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-3">{s.l}</div>
             </div>
           ))}
         </div>
