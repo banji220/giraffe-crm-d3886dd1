@@ -94,8 +94,9 @@
       var(--heat-4) 80%,
       var(--heat-5) 100%);
 
-    --font-display: "Fraunces", "Georgia", serif;
-    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-sans: "Space Grotesk", system-ui, sans-serif;
+    --font-mono: "Space Mono", ui-monospace, monospace;
 
     --shadow-brand: 0 20px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
     --shadow-card: 0 1px 0 0 color-mix(in oklab, var(--foreground) 10%, transparent),
