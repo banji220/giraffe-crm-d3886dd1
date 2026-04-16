@@ -225,10 +225,12 @@ function generateMonthValues(daysInMonth: number, seed: number, ramp: number) {
 }
 
 function MobileContributionGrid() {
-  // Single continuous grid — 14 cols × 6 rows = 84 days
-  const cols = 14;
-  const rows = 6;
-  const total = cols * rows;
+  // Single continuous 90-day grid — 18 cols × 5 rows. Horizontally scrollable.
+  const cols = 18;
+  const rows = 5;
+  const total = cols * rows; // 90
+  const cellSize = 28; // px — large, readable
+  const gap = 6;
   const cells: number[] = [];
   let seed = 19;
   for (let i = 0; i < total; i++) {
@@ -253,25 +255,36 @@ function MobileContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-4">
       <div className="flex items-center justify-between mb-4">
-        <div className="t-label">Last 12 weeks</div>
-        <div className="t-label text-muted-foreground">Sample</div>
+        <div className="t-label">Last 90 days</div>
+        <div className="t-label text-muted-foreground">Scroll →</div>
       </div>
 
       <div
-        className="grid gap-1.5"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-        }}
+        className="overflow-x-auto -mx-4 px-4 pb-1"
+        style={{ scrollbarWidth: "thin" }}
       >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/15 rounded-[3px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
-        ))}
+        <div
+          className="grid"
+          style={{
+            gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
+            gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
+            gridAutoFlow: "row",
+            gap: `${gap}px`,
+            width: "max-content",
+          }}
+        >
+          {cells.map((v, i) => (
+            <div
+              key={i}
+              className="border border-foreground/15 rounded-[3px]"
+              style={{
+                width: `${cellSize}px`,
+                height: `${cellSize}px`,
+                backgroundColor: `var(--heat-${v})`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
