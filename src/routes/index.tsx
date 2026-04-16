@@ -91,7 +91,7 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7 space-y-8">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 label-mono text-xs">
