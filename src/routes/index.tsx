@@ -276,18 +276,18 @@ function HowItWorks() {
 function HeatmapSection() {
   return (
     <section className="bg-secondary border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32 space-y-16">
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
-            <div className="label-mono text-xs text-primary mb-8">The Heatmap</div>
-            <h2 className="font-display text-6xl lg:text-[7rem] leading-[0.88] tracking-tight">
+            <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The Heatmap</div>
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[0.92] sm:leading-[0.88] tracking-tight">
               See your year.<br />
               Every knock<br />
               <span className="text-primary">counted.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-base text-muted-foreground leading-relaxed border-l-4 border-foreground pl-5">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed border-l-4 border-foreground pl-5">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
@@ -304,9 +304,9 @@ function HeatmapSection() {
             { n: "238", l: "Deals closed" },
             { n: "$84,210", l: "Revenue booked" },
           ].map((s) => (
-            <div key={s.l} className="bg-background p-6">
-              <div className="font-mono font-bold text-6xl">{s.n}</div>
-              <div className="label-mono text-xs text-muted-foreground mt-2">{s.l}</div>
+            <div key={s.l} className="bg-background p-4 sm:p-6">
+              <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl break-all">{s.n}</div>
+              <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-2">{s.l}</div>
             </div>
           ))}
         </div>
