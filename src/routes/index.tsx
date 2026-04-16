@@ -396,10 +396,10 @@ function HeatmapSection() {
 }
 
 function MobileHeatmap() {
-  // 13 weeks × 7 days = ~3 months, sized to be tappable and legible on phones
-  const weeks = 13;
-  const days = 7;
-  const total = weeks * days;
+  // 90 days laid out as 10 columns × 9 rows for big, intentional cells on phones
+  const cols = 10;
+  const rows = 9;
+  const total = cols * rows; // 90
   const cells: number[] = [];
   let seed = 47;
   for (let i = 0; i < total; i++) {
@@ -416,34 +416,34 @@ function MobileHeatmap() {
       x < 0.97 ? 4 : 5;
     cells.push(v);
   }
-  const monthLabels = ["8 wks ago", "4 wks ago", "This week"];
+  const rangeLabels = ["90 days ago", "45 days ago", "Today"];
 
   return (
     <div className="border-2 border-foreground bg-card p-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="t-label">Last 13 weeks</div>
+        <div className="t-label">Last 90 days</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-1.5"
+        className="grid gap-2"
         style={{
-          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
-          gridAutoFlow: "column",
-          gridTemplateRows: `repeat(${days}, 1fr)`,
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+          gridAutoFlow: "row",
+          gridTemplateRows: `repeat(${rows}, 1fr)`,
         }}
       >
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/15 rounded-[2px]"
+            className="aspect-square border border-foreground/15 rounded-[3px]"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
       </div>
 
       <div className="mt-3 flex items-center justify-between t-label text-muted-foreground">
-        {monthLabels.map((m) => (
+        {rangeLabels.map((m) => (
           <span key={m}>{m}</span>
         ))}
       </div>
