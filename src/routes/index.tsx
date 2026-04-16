@@ -43,7 +43,7 @@ function Index() {
 /* ---------- Header ---------- */
 function Header() {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b-2 border-border-2/60">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b-2 border-border/60">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Wordmark />
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
@@ -92,7 +92,7 @@ function Hero() {
       <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-12 items-center relative">
         <div className="lg:col-span-6 space-y-8">
-          <div className="inline-flex items-center gap-2 border-2 border-border-2 bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+          <div className="inline-flex items-center gap-2 border-2 border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
             <span className="w-1.5 h-1.5 bg-brand" />
             Built for window cleaning crews
           </div>
@@ -142,7 +142,7 @@ function Hero() {
           </div>
 
           {/* Floating quote card */}
-          <div className="absolute -bottom-6 -left-6 bg-card border-2 border-border-2 p-4 max-w-[260px] hidden sm:block">
+          <div className="absolute -bottom-6 -left-6 bg-card border-2 border-border p-4 max-w-[260px] hidden sm:block">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs text-muted-foreground label-mono">
                 Quote sent
@@ -189,7 +189,7 @@ function Marquee() {
     "One-tap close",
   ];
   return (
-    <div className="border-y border-border-2 bg-foreground text-background overflow-hidden">
+    <div className="border-y-2 border-border bg-foreground text-background overflow-hidden">
       <div className="flex gap-12 py-4 whitespace-nowrap animate-[marquee_30s_linear_infinite]">
         {[...items, ...items, ...items].map((t, i) => (
           <span key={i} className="font-display text-xl flex items-center gap-12">
@@ -255,7 +255,7 @@ function Features() {
           {features.map((f, i) => (
             <div
               key={i}
-              className="group relative bg-card border-2 border-border-2 p-7 hover:border-foreground transition-all hover:-translate-y-1"
+              className="group relative bg-card border-2 border-border p-7 hover:border-foreground transition-all hover:-translate-y-1"
             >
               <div className="w-12 h-12 bg-brand text-brand-foreground flex items-center justify-center mb-5">
                 {f.icon}
@@ -292,7 +292,7 @@ function Heatmap() {
   const hot = totals[3] + totals[4] + totals[5];
 
   return (
-    <section className="py-24 lg:py-32 bg-secondary/60 border-y border-border-2/60">
+    <section className="py-24 lg:py-32 bg-secondary/60 border-y-2 border-border/60">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 space-y-6">
           <div className="text-sm label-mono"
@@ -340,7 +340,7 @@ function Heatmap() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="bg-card border-2 border-border-2 p-5 lg:p-7">
+          <div className="bg-card border-2 border-border p-5 lg:p-7">
             <div className="flex items-center justify-between mb-4">
               <div className="text-xs text-muted-foreground label-mono">
                 Maple Grove · Tuesday
@@ -530,7 +530,7 @@ function CTA() {
 /* ---------- Footer ---------- */
 function Footer() {
   return (
-    <footer className="border-t-2 border-border-2 py-10">
+    <footer className="border-t-2 border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
