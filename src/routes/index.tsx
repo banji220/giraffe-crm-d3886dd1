@@ -270,6 +270,124 @@ function Features() {
   );
 }
 
+/* ---------- Heatmap ---------- */
+function Heatmap() {
+  // Deterministic pseudo-random 24x10 grid of heat levels (0-5)
+  const cols = 24;
+  const rows = 10;
+  const cells: number[] = [];
+  let seed = 7;
+  for (let i = 0; i < cols * rows; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    const r = seed / 233280;
+    // Skew toward lower values, occasional fire
+    const v = r < 0.35 ? 0 : r < 0.55 ? 1 : r < 0.75 ? 2 : r < 0.88 ? 3 : r < 0.97 ? 4 : 5;
+    cells.push(v);
+  }
+  const heatVar = (lvl: number) => `var(--heat-${lvl})`;
+  const totals = [0, 0, 0, 0, 0, 0];
+  cells.forEach((v) => totals[v]++);
+  const knocks = cells.length;
+  const closes = totals[4] + totals[5];
+  const hot = totals[3] + totals[4] + totals[5];
+
+  return (
+    <section className="py-24 lg:py-32 bg-secondary/60 border-y border-border/60">
+      <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-5 space-y-6">
+          <div className="text-sm font-semibold uppercase tracking-wider"
+               style={{ color: "var(--heat-4)" }}>
+            The Door Heatmap
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
+            See your neighborhood{" "}
+            <span style={{
+              backgroundImage: "var(--gradient-heat)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}>
+              light up
+            </span>
+            .
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Every knock leaves a trace. Cold doors fade. Warm leads glow.
+            Closes burn bright. Walk into tomorrow knowing exactly where the money lives.
+          </p>
+
+          <div className="flex items-center gap-2 pt-2">
+            <span className="text-xs text-muted-foreground mr-2">Cold</span>
+            {[0, 1, 2, 3, 4, 5].map((lvl) => (
+              <span
+                key={lvl}
+                className="w-6 h-6 rounded-md border"
+                style={{
+                  backgroundColor: heatVar(lvl),
+                  borderColor: "color-mix(in oklab, var(--foreground) 15%, transparent)",
+                }}
+                aria-label={`Heat level ${lvl}`}
+              />
+            ))}
+            <span className="text-xs text-muted-foreground ml-2">Fire</span>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 pt-4 max-w-sm">
+            <HeatStat n={knocks} label="Knocks" />
+            <HeatStat n={hot} label="Warm+" accent />
+            <HeatStat n={closes} label="Closed" fire />
+          </div>
+        </div>
+
+        <div className="lg:col-span-7">
+          <div className="bg-card border border-border rounded-3xl p-5 lg:p-7 shadow-card">
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Maple Grove · Tuesday
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="w-2 h-2 rounded-full animate-pulse"
+                      style={{ backgroundColor: "var(--heat-5)" }} />
+                Live
+              </div>
+            </div>
+            <div
+              className="grid gap-1.5"
+              style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+            >
+              {cells.map((v, i) => (
+                <div
+                  key={i}
+                  className="aspect-square rounded-[4px] transition-transform hover:scale-125 hover:z-10"
+                  style={{
+                    backgroundColor: heatVar(v),
+                    animation: `heatPulse 4s ease-in-out ${(i % 12) * 0.15}s infinite`,
+                    opacity: v === 0 ? 0.6 : 1,
+                  }}
+                />
+              ))}
+            </div>
+            <style>{`@keyframes heatPulse {
+              0%, 100% { transform: scale(1); }
+              50% { transform: scale(1.04); }
+            }`}</style>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HeatStat({ n, label, accent, fire }: { n: number; label: string; accent?: boolean; fire?: boolean }) {
+  const color = fire ? "var(--heat-5)" : accent ? "var(--heat-3)" : "var(--foreground)";
+  return (
+    <div className="border-l-2 pl-3" style={{ borderColor: color }}>
+      <div className="font-display text-3xl font-bold" style={{ color }}>{n}</div>
+      <div className="text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
+    </div>
+  );
+}
+
 /* ---------- Workflow ---------- */
 function Workflow() {
   const steps = [
