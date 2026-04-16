@@ -178,17 +178,4 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
   }
-  .grain {
-    background-image:
-      radial-gradient(color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px);
-    background-size: 3px 3px;
-  }
-  .spot-pattern {
-    background-color: var(--brand);
-    background-image:
-      radial-gradient(ellipse 18px 14px at 20% 30%, color-mix(in oklab, var(--ink) 35%, transparent) 50%, transparent 52%),
-      radial-gradient(ellipse 22px 16px at 70% 60%, color-mix(in oklab, var(--ink) 35%, transparent) 50%, transparent 52%),
-      radial-gradient(ellipse 14px 12px at 45% 85%, color-mix(in oklab, var(--ink) 35%, transparent) 50%, transparent 52%),
-      radial-gradient(ellipse 16px 14px at 85% 20%, color-mix(in oklab, var(--ink) 35%, transparent) 50%, transparent 52%);
-  }
 }
