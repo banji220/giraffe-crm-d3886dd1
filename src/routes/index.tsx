@@ -62,13 +62,13 @@ function Header() {
         <div className="flex items-center gap-3">
           <a
             href={APP_URL}
-            className="hidden sm:inline-flex label-mono text-xs text-foreground hover:text-primary"
+            className="hidden sm:inline-flex t-label text-foreground hover:text-primary"
           >
             Sign in
           </a>
           <a
             href={APP_URL}
-            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 label-mono text-[10px] sm:text-xs hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 t-label hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
           >
             Start knocking <Arrow />
           </a>
