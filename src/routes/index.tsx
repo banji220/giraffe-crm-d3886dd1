@@ -124,11 +124,85 @@ function Hero() {
           </div>
 
           <div className="lg:col-span-5">
-            <ContributionGrid />
+            <div className="hidden sm:block">
+              <ContributionGrid />
+            </div>
+            <div className="sm:hidden">
+              <MobileContributionGrid />
+            </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ---------- Mobile Contribution Grid (12 weeks) ---------- */
+function MobileContributionGrid() {
+  const weeks = 12;
+  const days = 7;
+  const total = weeks * days;
+  const cells: number[] = [];
+  let seed = 19;
+  for (let i = 0; i < total; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    const r = seed / 233280;
+    const ramp = i / total;
+    const boost = ramp * 0.4;
+    const x = r + boost;
+    const v =
+      x < 0.4 ? 0 :
+      x < 0.62 ? 1 :
+      x < 0.8 ? 2 :
+      x < 0.91 ? 3 :
+      x < 0.97 ? 4 : 5;
+    cells.push(v);
+  }
+  const totals = [0, 0, 0, 0, 0, 0];
+  cells.forEach((v) => totals[v]++);
+  const knocks = cells.length;
+  const closes = totals[4] + totals[5];
+
+  return (
+    <div className="border-2 border-foreground bg-card p-4">
+      <div className="flex items-center justify-between mb-3">
+        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label text-muted-foreground">Sample</div>
+      </div>
+
+      <div
+        className="grid gap-1.5"
+        style={{
+          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
+          gridAutoFlow: "column",
+          gridTemplateRows: `repeat(${days}, 1fr)`,
+        }}
+      >
+        {cells.map((v, i) => (
+          <div
+            key={i}
+            className="aspect-square border border-foreground/15 rounded-[2px]"
+            style={{ backgroundColor: `var(--heat-${v})` }}
+          />
+        ))}
+      </div>
+
+      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-1">
+          <Stat n={knocks.toLocaleString()} label="Knocks" />
+          <Stat n={closes.toLocaleString()} label="Closed" />
+        </div>
+        <div className="flex items-center gap-1">
+          {[0, 1, 2, 3, 4, 5].map((lvl) => (
+            <span
+              key={lvl}
+              className="w-3 h-3 border border-foreground/15"
+              style={{ backgroundColor: `var(--heat-${lvl})` }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
