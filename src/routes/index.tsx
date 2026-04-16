@@ -103,7 +103,7 @@ function Hero() {
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7]">
+            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7] [overflow-wrap:anywhere]">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
