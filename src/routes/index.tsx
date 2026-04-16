@@ -57,7 +57,7 @@ function Index() {
 function Header() {
   return (
     <header className="sticky top-0 z-40 bg-background border-b-2 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
         <Wordmark />
         <div className="flex items-center gap-3">
           <a
