@@ -280,14 +280,14 @@ function HeatmapSection() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The Heatmap</div>
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[0.92] sm:leading-[0.88] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.88] tracking-tight">
               See your year.<br />
               Every knock<br />
               <span className="text-primary">counted.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed border-l-4 border-foreground pl-5">
+            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
