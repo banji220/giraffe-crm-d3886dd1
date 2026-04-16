@@ -98,12 +98,12 @@ function Hero() {
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
             </div>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-[7rem] xl:text-[9rem] leading-[0.9] lg:leading-[0.85] tracking-tight">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-[7rem] xl:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
               Knock.<br />
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7]">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
@@ -220,7 +220,7 @@ function Problem() {
     <section className="dark bg-background text-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
         <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The problem</div>
-        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[0.95] sm:leading-[0.9] tracking-tight max-w-5xl">
+        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] tracking-tight max-w-5xl">
           Your CRM wasn't built<br />
           for the <span className="text-primary">doorstep.</span>
         </h2>
@@ -232,7 +232,7 @@ function Problem() {
           ].map((p) => (
             <div key={p.k} className="bg-background p-6 sm:p-8">
               <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-2xl sm:text-3xl leading-tight">{p.v}</p>
+              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight">{p.v}</p>
             </div>
           ))}
         </div>
@@ -252,7 +252,7 @@ function HowItWorks() {
     <section className="border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
         <div className="label-mono text-xs mb-6 sm:mb-8">How it works</div>
-        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[0.95] sm:leading-[0.9] tracking-tight max-w-4xl mb-10 sm:mb-16">
+        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] tracking-tight max-w-4xl mb-10 sm:mb-16">
           Three taps. <span className="text-primary">One sale.</span>
         </h2>
 
@@ -262,8 +262,8 @@ function HowItWorks() {
               <div className="font-mono font-bold text-5xl sm:text-6xl text-primary leading-none mb-6 sm:mb-8">
                 {s.n}
               </div>
-              <div className="font-display text-5xl sm:text-6xl leading-none mb-4 sm:mb-6">{s.t}.</div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{s.b}</p>
+              <div className="font-display text-5xl sm:text-6xl leading-[1.05] sm:leading-none mb-4 sm:mb-6">{s.t}.</div>
+              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed">{s.b}</p>
             </div>
           ))}
         </div>
@@ -280,14 +280,14 @@ function HeatmapSection() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The Heatmap</div>
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[0.92] sm:leading-[0.88] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.88] tracking-tight">
               See your year.<br />
               Every knock<br />
               <span className="text-primary">counted.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed border-l-4 border-foreground pl-5">
+            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
@@ -363,10 +363,10 @@ function FinalCTA() {
     <section className="bg-primary text-primary-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 text-center">
         <div className="label-mono text-xs mb-6 sm:mb-8">Ready?</div>
-        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[0.9] sm:leading-[0.85] tracking-tight">
+        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90">
+        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
