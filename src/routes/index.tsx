@@ -366,7 +366,7 @@ function FinalCTA() {
         <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7]">
+        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7] [overflow-wrap:anywhere]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
