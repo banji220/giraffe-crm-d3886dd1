@@ -22,6 +22,23 @@ export const Route = createFileRoute("/")({
 
 const APP_URL = "https://app.holygiraffe.com/login";
 
+function Arrow() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
+      className="w-4 h-4 inline-block"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -386,19 +403,3 @@ function Footer() {
   );
 }
 
-function Arrow() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="square"
-      strokeLinejoin="miter"
-      className="w-4 h-4 inline-block"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14M13 5l7 7-7 7" />
-    </svg>
-  );
-}
