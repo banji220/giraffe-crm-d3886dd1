@@ -98,12 +98,12 @@ function Hero() {
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
             </div>
-            <h1 className="font-display text-6xl lg:text-[7rem] xl:text-[9rem] leading-[0.85] tracking-tight">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-[7rem] xl:text-[9rem] leading-[0.9] lg:leading-[0.85] tracking-tight">
               Knock.<br />
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-base max-w-md text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-relaxed">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
