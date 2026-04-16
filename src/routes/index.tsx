@@ -295,7 +295,12 @@ function HeatmapSection() {
           </div>
         </div>
 
-        <BigContributionGrid />
+        <div className="hidden sm:block">
+          <BigContributionGrid />
+        </div>
+        <div className="sm:hidden">
+          <MobileHeatmap />
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
           {[
