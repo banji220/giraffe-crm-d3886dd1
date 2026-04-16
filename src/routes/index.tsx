@@ -96,7 +96,7 @@ function Hero() {
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
               <span className="w-2 h-2 bg-primary" />
-              Field CRM · Built for the Doorstep
+              Field CRM · Door-to-door sales teams
             </div>
             <h1 className="t-hero">
               Knock.<br />
