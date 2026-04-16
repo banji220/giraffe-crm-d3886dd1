@@ -31,6 +31,7 @@ function Index() {
       <Hero />
       <Marquee />
       <Features />
+      <Heatmap />
       <Workflow />
       <Pricing />
       <CTA />
