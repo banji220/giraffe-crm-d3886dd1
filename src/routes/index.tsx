@@ -305,8 +305,8 @@ function HeatmapSection() {
             { n: "$84,210", l: "Revenue booked" },
           ].map((s) => (
             <div key={s.l} className="bg-background p-4 sm:p-6">
-              <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl tabular-nums whitespace-nowrap">{s.n}</div>
-              <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-3">{s.l}</div>
+              <div className="t-stat whitespace-nowrap">{s.n}</div>
+              <div className="t-label text-muted-foreground mt-3">{s.l}</div>
             </div>
           ))}
         </div>
