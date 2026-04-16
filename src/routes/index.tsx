@@ -138,57 +138,122 @@ function Hero() {
 }
 
 /* ---------- Mobile Contribution Grid (12 weeks) ---------- */
-function MobileContributionGrid() {
-  // 90 days, laid out as 15 columns × 6 rows for large, readable cells on phones
-  const cols = 15;
-  const rows = 6;
-  const total = cols * rows; // 90
-  const cells: number[] = [];
-  let seed = 19;
-  for (let i = 0; i < total; i++) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const r = seed / 233280;
-    const ramp = i / total;
-    const boost = ramp * 0.4;
-    const x = r + boost;
+/* ---------- Mobile month-grid building blocks ---------- */
+const WEEKDAY_LABELS = ["M", "T", "W", "T", "F", "S", "S"];
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+// Returns the last `count` months in chronological order (oldest → newest),
+// each with: name, year, daysInMonth, leadingBlanks (Mon-start week offset).
+function getRecentMonths(count: number, refDate = new Date()) {
+  const months: { name: string; year: number; daysInMonth: number; leadingBlanks: number; monthIndex: number }[] = [];
+  for (let i = count - 1; i >= 0; i--) {
+    const d = new Date(refDate.getFullYear(), refDate.getMonth() - i, 1);
+    const monthIndex = d.getMonth();
+    const year = d.getFullYear();
+    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+    // Convert Sun=0..Sat=6 → Mon=0..Sun=6
+    const jsDay = new Date(year, monthIndex, 1).getDay();
+    const leadingBlanks = (jsDay + 6) % 7;
+    months.push({ name: MONTH_NAMES[monthIndex], year, daysInMonth, leadingBlanks, monthIndex });
+  }
+  return months;
+}
+
+function MonthCalendar({
+  month,
+  values,
+  cellSizeClass = "aspect-square",
+}: {
+  month: { name: string; year: number; daysInMonth: number; leadingBlanks: number };
+  values: number[];
+  cellSizeClass?: string;
+}) {
+  const totalCells = month.leadingBlanks + month.daysInMonth;
+  const trailingBlanks = (7 - (totalCells % 7)) % 7;
+  return (
+    <div>
+      <div className="flex items-baseline justify-between mb-2">
+        <div className="font-display text-lg leading-none">{month.name}</div>
+        <div className="t-label text-muted-foreground">{month.year}</div>
+      </div>
+      <div className="grid grid-cols-7 gap-1 mb-1.5">
+        {WEEKDAY_LABELS.map((d, i) => (
+          <div key={i} className="t-label text-muted-foreground text-center">
+            {d}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {Array.from({ length: month.leadingBlanks }).map((_, i) => (
+          <div key={`lb-${i}`} className={cellSizeClass} />
+        ))}
+        {Array.from({ length: month.daysInMonth }).map((_, i) => (
+          <div
+            key={`d-${i}`}
+            className={`${cellSizeClass} border border-foreground/15 rounded-[3px]`}
+            style={{ backgroundColor: `var(--heat-${values[i] ?? 0})` }}
+          />
+        ))}
+        {Array.from({ length: trailingBlanks }).map((_, i) => (
+          <div key={`tb-${i}`} className={cellSizeClass} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Deterministic activity values per month (0..5) using a seeded LCG.
+function generateMonthValues(daysInMonth: number, seed: number, ramp: number) {
+  let s = seed;
+  const out: number[] = [];
+  for (let i = 0; i < daysInMonth; i++) {
+    s = (s * 9301 + 49297) % 233280;
+    const r = s / 233280;
+    const x = r + ramp;
     const v =
       x < 0.4 ? 0 :
       x < 0.62 ? 1 :
       x < 0.8 ? 2 :
       x < 0.91 ? 3 :
       x < 0.97 ? 4 : 5;
-    cells.push(v);
+    out.push(v);
   }
+  return out;
+}
+
+function MobileContributionGrid() {
+  const months = getRecentMonths(3);
+  const monthsWithValues = months.map((m, idx) => ({
+    month: m,
+    values: generateMonthValues(m.daysInMonth, 19 + idx * 53, 0.05 + idx * 0.12),
+  }));
   const totals = [0, 0, 0, 0, 0, 0];
-  cells.forEach((v) => totals[v]++);
-  const knocks = cells.length;
+  let knocks = 0;
+  monthsWithValues.forEach(({ values }) => {
+    values.forEach((v) => {
+      totals[v]++;
+      knocks++;
+    });
+  });
   const closes = totals[4] + totals[5];
 
   return (
     <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-3">
-        <div className="t-label">Last 90 days</div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="t-label">Last 3 months</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
-      <div
-        className="grid gap-1.5"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-        }}
-      >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/15 rounded-[2px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+      <div className="space-y-5">
+        {monthsWithValues.map(({ month, values }) => (
+          <MonthCalendar key={`${month.year}-${month.name}`} month={month} values={values} />
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+      <div className="mt-5 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
         <div className="grid grid-cols-2 gap-x-5 gap-y-1">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
