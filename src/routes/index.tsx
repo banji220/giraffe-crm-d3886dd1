@@ -263,7 +263,7 @@ function HowItWorks() {
                 {s.n}
               </div>
               <div className="font-display text-5xl sm:text-6xl leading-[1.05] sm:leading-none mb-4 sm:mb-6">{s.t}.</div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed">{s.b}</p>
+              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed [overflow-wrap:anywhere]">{s.b}</p>
             </div>
           ))}
         </div>
