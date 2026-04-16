@@ -320,6 +320,77 @@ function HeatmapSection() {
   );
 }
 
+function MobileHeatmap() {
+  // 13 weeks × 7 days = ~3 months, sized to be tappable and legible on phones
+  const weeks = 13;
+  const days = 7;
+  const total = weeks * days;
+  const cells: number[] = [];
+  let seed = 47;
+  for (let i = 0; i < total; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    const r = seed / 233280;
+    const ramp = i / total;
+    const boost = ramp * 0.45;
+    const x = r + boost;
+    const v =
+      x < 0.38 ? 0 :
+      x < 0.6 ? 1 :
+      x < 0.78 ? 2 :
+      x < 0.9 ? 3 :
+      x < 0.97 ? 4 : 5;
+    cells.push(v);
+  }
+  const monthLabels = ["8 wks ago", "4 wks ago", "This week"];
+
+  return (
+    <div className="border-2 border-foreground bg-card p-4">
+      <div className="flex items-center justify-between mb-3">
+        <div className="t-label">Last 13 weeks</div>
+        <div className="t-label text-muted-foreground">Sample</div>
+      </div>
+
+      <div
+        className="grid gap-1.5"
+        style={{
+          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
+          gridAutoFlow: "column",
+          gridTemplateRows: `repeat(${days}, 1fr)`,
+        }}
+      >
+        {cells.map((v, i) => (
+          <div
+            key={i}
+            className="aspect-square border border-foreground/15 rounded-[2px]"
+            style={{ backgroundColor: `var(--heat-${v})` }}
+          />
+        ))}
+      </div>
+
+      <div className="mt-3 flex items-center justify-between t-label text-muted-foreground">
+        {monthLabels.map((m) => (
+          <span key={m}>{m}</span>
+        ))}
+      </div>
+
+      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+        <div className="t-label text-muted-foreground">Activity</div>
+        <div className="flex items-center gap-1.5">
+          <span className="t-label text-muted-foreground mr-1">Less</span>
+          {[0, 1, 2, 3, 4, 5].map((lvl) => (
+            <span
+              key={lvl}
+              className="w-3.5 h-3.5 border border-foreground/15"
+              style={{ backgroundColor: `var(--heat-${lvl})` }}
+            />
+          ))}
+          <span className="t-label text-muted-foreground ml-1">More</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function BigContributionGrid() {
   const weeks = 53;
   const days = 7;
