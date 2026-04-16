@@ -208,8 +208,8 @@ function ContributionGrid() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="font-mono font-bold text-3xl">{n}</div>
-      <div className="label-mono text-xs text-muted-foreground">{label}</div>
+      <div className="t-stat">{n}</div>
+      <div className="t-label text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
