@@ -250,20 +250,20 @@ function HowItWorks() {
   ];
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
-        <div className="label-mono text-xs mb-8">How it works</div>
-        <h2 className="font-display text-6xl lg:text-[6rem] leading-[0.9] tracking-tight max-w-4xl mb-16">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
+        <div className="label-mono text-xs mb-6 sm:mb-8">How it works</div>
+        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[0.95] sm:leading-[0.9] tracking-tight max-w-4xl mb-10 sm:mb-16">
           Three taps. <span className="text-primary">One sale.</span>
         </h2>
 
         <div className="grid md:grid-cols-3 gap-px bg-foreground border-2 border-foreground">
           {steps.map((s) => (
-            <div key={s.n} className="bg-background p-8 lg:p-10">
-              <div className="font-mono font-bold text-6xl text-primary leading-none mb-8">
+            <div key={s.n} className="bg-background p-6 sm:p-8 lg:p-10">
+              <div className="font-mono font-bold text-5xl sm:text-6xl text-primary leading-none mb-6 sm:mb-8">
                 {s.n}
               </div>
-              <div className="font-display text-6xl leading-none mb-6">{s.t}.</div>
-              <p className="text-base text-muted-foreground leading-relaxed">{s.b}</p>
+              <div className="font-display text-5xl sm:text-6xl leading-none mb-4 sm:mb-6">{s.t}.</div>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{s.b}</p>
             </div>
           ))}
         </div>
