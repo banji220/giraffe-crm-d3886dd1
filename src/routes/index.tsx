@@ -80,9 +80,9 @@ function Header() {
 
 function Wordmark() {
   return (
-    <Link to="/" className="flex items-center gap-2">
-      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9" />
-      <span className="font-display text-2xl sm:text-3xl text-brand">Giraffe!</span>
+    <Link to="/" className="flex items-center gap-2 min-w-0">
+      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9 shrink-0" />
+      <span className="font-display text-xl sm:text-3xl text-brand truncate">Giraffe!</span>
     </Link>
   );
 }
@@ -103,7 +103,7 @@ function Hero() {
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7]">
+            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7] [overflow-wrap:anywhere]">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
@@ -232,7 +232,7 @@ function Problem() {
           ].map((p) => (
             <div key={p.k} className="bg-background p-6 sm:p-8">
               <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight">{p.v}</p>
+              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight [overflow-wrap:anywhere]">{p.v}</p>
             </div>
           ))}
         </div>
@@ -263,7 +263,7 @@ function HowItWorks() {
                 {s.n}
               </div>
               <div className="font-display text-5xl sm:text-6xl leading-[1.05] sm:leading-none mb-4 sm:mb-6">{s.t}.</div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed">{s.b}</p>
+              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed [overflow-wrap:anywhere]">{s.b}</p>
             </div>
           ))}
         </div>
@@ -287,7 +287,7 @@ function HeatmapSection() {
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5">
+            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5 [overflow-wrap:anywhere]">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
@@ -305,7 +305,7 @@ function HeatmapSection() {
             { n: "$84,210", l: "Revenue booked" },
           ].map((s) => (
             <div key={s.l} className="bg-background p-4 sm:p-6">
-              <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl break-all">{s.n}</div>
+              <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl tabular-nums whitespace-nowrap">{s.n}</div>
               <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-2">{s.l}</div>
             </div>
           ))}
@@ -366,7 +366,7 @@ function FinalCTA() {
         <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7]">
+        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7] [overflow-wrap:anywhere]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
