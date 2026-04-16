@@ -287,7 +287,7 @@ function HeatmapSection() {
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5">
+            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5 [overflow-wrap:anywhere]">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
