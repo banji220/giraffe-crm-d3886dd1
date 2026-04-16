@@ -80,9 +80,9 @@ function Header() {
 
 function Wordmark() {
   return (
-    <Link to="/" className="flex items-center gap-2">
-      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9" />
-      <span className="font-display text-2xl sm:text-3xl text-brand">Giraffe!</span>
+    <Link to="/" className="flex items-center gap-2 min-w-0">
+      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9 shrink-0" />
+      <span className="font-display text-xl sm:text-3xl text-brand truncate">Giraffe!</span>
     </Link>
   );
 }
