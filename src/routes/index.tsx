@@ -110,13 +110,13 @@ function Hero() {
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
                 href={APP_URL}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
+                className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 t-label hover:bg-foreground hover:text-background transition-colors"
               >
                 Start knocking <Arrow />
               </a>
               <a
                 href={APP_URL}
-                className="inline-flex items-center gap-3 bg-background text-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
+                className="inline-flex items-center gap-3 bg-background text-foreground border-2 border-foreground px-6 py-4 t-label hover:bg-foreground hover:text-background transition-colors"
               >
                 Sign in
               </a>
