@@ -124,7 +124,12 @@ function Hero() {
           </div>
 
           <div className="lg:col-span-5">
-            <ContributionGrid />
+            <div className="hidden sm:block">
+              <ContributionGrid />
+            </div>
+            <div className="sm:hidden">
+              <MobileContributionGrid />
+            </div>
           </div>
         </div>
       </div>
