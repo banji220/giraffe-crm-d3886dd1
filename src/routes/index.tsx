@@ -53,7 +53,7 @@ function Header() {
             href={APP_URL}
             className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-4 py-2 label-mono text-xs hover:bg-primary hover:border-primary transition-colors"
           >
-            Start knocking →
+            Start knocking <Arrow />
           </a>
         </div>
       </div>
@@ -95,7 +95,7 @@ function Hero() {
                 href={APP_URL}
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
               >
-                Start knocking →
+                Start knocking <Arrow />
               </a>
               <a
                 href={APP_URL}
@@ -356,7 +356,7 @@ function FinalCTA() {
           href={APP_URL}
           className="mt-12 inline-flex items-center gap-3 bg-foreground text-background border-2 border-foreground px-8 py-5 label-mono text-xs hover:bg-background hover:text-foreground transition-colors"
         >
-          Open the app →
+          Open the app <Arrow />
         </a>
       </div>
     </section>
@@ -379,7 +379,7 @@ function Footer() {
           href={APP_URL}
           className="label-mono text-xs hover:text-primary transition-colors"
         >
-          app.holygiraffe.com →
+          app.holygiraffe.com <Arrow />
         </a>
       </div>
     </footer>
