@@ -139,9 +139,10 @@ function Hero() {
 
 /* ---------- Mobile Contribution Grid (12 weeks) ---------- */
 function MobileContributionGrid() {
-  const weeks = 12;
-  const days = 7;
-  const total = weeks * days;
+  // 90 days, laid out as 15 columns × 6 rows for large, readable cells on phones
+  const cols = 15;
+  const rows = 6;
+  const total = cols * rows; // 90
   const cells: number[] = [];
   let seed = 19;
   for (let i = 0; i < total; i++) {
@@ -166,16 +167,16 @@ function MobileContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label">Last 90 days</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
         className="grid gap-1.5"
         style={{
-          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
-          gridAutoFlow: "column",
-          gridTemplateRows: `repeat(${days}, 1fr)`,
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+          gridAutoFlow: "row",
+          gridTemplateRows: `repeat(${rows}, 1fr)`,
         }}
       >
         {cells.map((v, i) => (
