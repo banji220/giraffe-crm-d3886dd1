@@ -218,7 +218,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 function Problem() {
   return (
     <section className="dark bg-background text-foreground border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32">
         <div className="t-label text-primary mb-6 sm:mb-8">The problem</div>
         <h2 className="t-section max-w-5xl">
           Your CRM wasn't built<br />
@@ -250,7 +250,7 @@ function HowItWorks() {
   ];
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32">
         <div className="t-label mb-6 sm:mb-8">How it works</div>
         <h2 className="t-section max-w-4xl mb-10 sm:mb-16">
           Three taps. <span className="text-primary">One sale.</span>
@@ -276,11 +276,11 @@ function HowItWorks() {
 function HeatmapSection() {
   return (
     <section className="bg-secondary border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="t-label text-primary mb-6 sm:mb-8">The Heatmap</div>
-            <h2 className="t-hero">
+            <h2 className="t-section">
               See your year.<br />
               Every knock<br />
               <span className="text-primary">counted.</span>
@@ -361,7 +361,7 @@ function BigContributionGrid() {
 function FinalCTA() {
   return (
     <section className="bg-primary text-primary-foreground border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32 text-center">
         <div className="t-label mb-6 sm:mb-8">Ready?</div>
         <h2 className="t-hero">
           Start knocking.
@@ -384,17 +384,17 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="bg-background">
-      <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5">
-          <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7 shrink-0" />
           <span className="font-display text-2xl sm:text-3xl text-brand leading-none">Giraffe!</span>
-          <span className="t-label text-muted-foreground ml-3">
+          <span className="t-label text-muted-foreground ml-3 shrink-0">
             © {new Date().getFullYear()}
           </span>
         </div>
         <a
           href={APP_URL}
-          className="t-label hover:text-primary transition-colors"
+          className="t-label text-center [overflow-wrap:anywhere] hover:text-primary transition-colors"
         >
           app.holygiraffe.com <Arrow />
         </a>
