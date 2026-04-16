@@ -387,14 +387,14 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
-          <span className="font-display text-3xl text-brand leading-none">Giraffe!</span>
-          <span className="label-mono text-xs text-muted-foreground ml-3">
+          <span className="font-display text-2xl sm:text-3xl text-brand leading-none">Giraffe!</span>
+          <span className="t-label text-muted-foreground ml-3">
             © {new Date().getFullYear()}
           </span>
         </div>
         <a
           href={APP_URL}
-          className="label-mono text-xs hover:text-primary transition-colors"
+          className="t-label hover:text-primary transition-colors"
         >
           app.holygiraffe.com <Arrow />
         </a>
