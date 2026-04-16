@@ -98,7 +98,7 @@ function Hero() {
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
             </div>
-            <h1 className="font-display text-6xl sm:text-[7rem] lg:text-[9rem] leading-[0.85] tracking-tight">
+            <h1 className="font-display text-6xl lg:text-[7rem] xl:text-[9rem] leading-[0.85] tracking-tight">
               Knock.<br />
               Quote.<br />
               <span className="text-primary">Close.</span>
