@@ -50,7 +50,7 @@
 
 @layer base {
   :root {
-    --radius: 0.75rem;
+    --radius: 0px;
 
     /* Mandatory brand palette */
     --background: oklch(0.97 0.005 80);
