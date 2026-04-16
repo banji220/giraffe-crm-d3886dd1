@@ -94,16 +94,16 @@ function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 label-mono text-xs">
+            <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
             </div>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-[7rem] xl:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
+            <h1 className="t-hero">
               Knock.<br />
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7] [overflow-wrap:anywhere]">
+            <p className="t-body max-w-md text-muted-foreground [overflow-wrap:anywhere]">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
