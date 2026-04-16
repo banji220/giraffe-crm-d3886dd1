@@ -99,7 +99,7 @@ function Hero() {
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
             Knock.<br />
             Quote.<br />
-            <span className="text-brand italic">Close.</span>
+            <span className="text-brand">Close.</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
             Giraffe is the field sales CRM for door-to-door window cleaners. Map your route,
@@ -144,12 +144,12 @@ function Hero() {
           {/* Floating quote card */}
           <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-4 shadow-card max-w-[260px] hidden sm:block">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <span className="text-xs text-muted-foreground label-mono">
                 Quote sent
               </span>
               <span className="text-xs text-brand-deep font-bold">Closed ✓</span>
             </div>
-            <div className="font-display text-2xl font-bold">$340.00</div>
+            <div className="font-mono text-2xl font-bold">$340.00</div>
             <div className="text-xs text-muted-foreground mt-1">
               14 windows · biweekly · 712 Maple St.
             </div>
@@ -172,8 +172,8 @@ function Hero() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="font-display text-2xl font-bold text-foreground">{n}</div>
-      <div className="text-xs uppercase tracking-wider">{label}</div>
+      <div className="font-mono text-2xl font-bold text-foreground">{n}</div>
+      <div className="text-xs label-mono">{label}</div>
     </div>
   );
 }
@@ -242,7 +242,7 @@ function Features() {
     <section id="features" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm font-semibold text-brand-deep uppercase tracking-wider mb-4">
+          <div className="text-sm text-brand-deep mb-4 label-mono">
             Built for the porch, not the boardroom
           </div>
           <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
@@ -295,7 +295,7 @@ function Heatmap() {
     <section className="py-24 lg:py-32 bg-secondary/60 border-y border-border/60">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 space-y-6">
-          <div className="text-sm font-semibold uppercase tracking-wider"
+          <div className="text-sm label-mono"
                style={{ color: "var(--heat-4)" }}>
             The Door Heatmap
           </div>
@@ -342,7 +342,7 @@ function Heatmap() {
         <div className="lg:col-span-7">
           <div className="bg-card border border-border rounded-3xl p-5 lg:p-7 shadow-card">
             <div className="flex items-center justify-between mb-4">
-              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="text-xs text-muted-foreground label-mono">
                 Maple Grove · Tuesday
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -382,8 +382,8 @@ function HeatStat({ n, label, accent, fire }: { n: number; label: string; accent
   const color = fire ? "var(--heat-5)" : accent ? "var(--heat-3)" : "var(--foreground)";
   return (
     <div className="border-l-2 pl-3" style={{ borderColor: color }}>
-      <div className="font-display text-3xl font-bold" style={{ color }}>{n}</div>
-      <div className="text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className="font-mono text-3xl font-bold" style={{ color }}>{n}</div>
+      <div className="text-xs text-muted-foreground label-mono">{label}</div>
     </div>
   );
 }
@@ -401,7 +401,7 @@ function Workflow() {
            style={{ backgroundImage: "radial-gradient(currentColor 1.5px, transparent 1.5px)", backgroundSize: "24px 24px" }} />
       <div className="mx-auto max-w-7xl px-6 relative">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm font-semibold text-brand uppercase tracking-wider mb-4">
+          <div className="text-sm text-brand mb-4 label-mono">
             The Giraffe loop
           </div>
           <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
@@ -412,7 +412,7 @@ function Workflow() {
         <div className="grid md:grid-cols-3 gap-px bg-background/10 rounded-3xl overflow-hidden">
           {steps.map((s) => (
             <div key={s.n} className="bg-foreground p-8 lg:p-10">
-              <div className="font-display text-7xl text-brand mb-6">{s.n}</div>
+              <div className="font-mono text-7xl font-bold text-brand mb-6">{s.n}</div>
               <div className="font-display text-2xl mb-3">{s.t}</div>
               <p className="text-background/70 leading-relaxed">{s.b}</p>
             </div>
@@ -429,7 +429,7 @@ function Pricing() {
     <section id="pricing" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm font-semibold text-brand-deep uppercase tracking-wider mb-4">
+          <div className="text-sm text-brand-deep mb-4 label-mono">
             Simple pricing
           </div>
           <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
@@ -439,12 +439,12 @@ function Pricing() {
 
         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
           <div className="lg:col-span-2 relative bg-card border-2 border-foreground rounded-3xl p-8 lg:p-12 shadow-card">
-            <div className="absolute -top-3 left-8 bg-brand text-brand-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+            <div className="absolute -top-3 left-8 bg-brand text-brand-foreground text-xs px-3 py-1 rounded-full label-mono">
               Crew
             </div>
             <div className="grid sm:grid-cols-2 gap-8 items-center">
               <div>
-                <div className="font-display text-6xl font-bold mb-2">
+                <div className="font-mono text-6xl font-bold mb-2 tracking-tight">
                   $39
                   <span className="text-lg text-muted-foreground font-sans font-normal">/rep/mo</span>
                 </div>
