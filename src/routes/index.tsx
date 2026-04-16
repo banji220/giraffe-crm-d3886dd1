@@ -104,7 +104,7 @@ function Hero() {
               <span className="text-primary">Close.</span>
             </h1>
             <p className="t-body max-w-md text-muted-foreground [overflow-wrap:anywhere]">
-              The field sales CRM for door-to-door window cleaning crews.
+              The field sales CRM for door-to-door teams.
               Map the route, quote on the porch, close before you walk away.
             </p>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
