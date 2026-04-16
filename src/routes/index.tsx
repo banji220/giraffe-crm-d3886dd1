@@ -495,10 +495,12 @@ function HeatmapSection() {
 }
 
 function MobileHeatmap() {
-  // Single continuous grid — 12 cols × 8 rows = 96 days, large readable cells
-  const cols = 12;
-  const rows = 8;
-  const total = cols * rows;
+  // Single continuous 90-day grid — 18 cols × 5 rows. Horizontally scrollable, larger cells.
+  const cols = 18;
+  const rows = 5;
+  const total = cols * rows; // 90
+  const cellSize = 36; // px — bigger for the signature section
+  const gap = 8;
   const cells: number[] = [];
   let seed = 47;
   for (let i = 0; i < total; i++) {
@@ -519,25 +521,36 @@ function MobileHeatmap() {
   return (
     <div className="border-2 border-foreground bg-card p-5">
       <div className="flex items-center justify-between mb-5">
-        <div className="t-label">Last ~3 months</div>
-        <div className="t-label text-muted-foreground">Sample</div>
+        <div className="t-label">Last 90 days</div>
+        <div className="t-label text-muted-foreground">Scroll →</div>
       </div>
 
       <div
-        className="grid gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-        }}
+        className="overflow-x-auto -mx-5 px-5 pb-1"
+        style={{ scrollbarWidth: "thin" }}
       >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
-        ))}
+        <div
+          className="grid"
+          style={{
+            gridTemplateColumns: `repeat(${cols}, ${cellSize}px)`,
+            gridTemplateRows: `repeat(${rows}, ${cellSize}px)`,
+            gridAutoFlow: "row",
+            gap: `${gap}px`,
+            width: "max-content",
+          }}
+        >
+          {cells.map((v, i) => (
+            <div
+              key={i}
+              className="border border-foreground/20 rounded-[3px]"
+              style={{
+                width: `${cellSize}px`,
+                height: `${cellSize}px`,
+                backgroundColor: `var(--heat-${v})`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="mt-5 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
