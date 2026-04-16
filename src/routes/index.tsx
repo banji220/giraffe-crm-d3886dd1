@@ -232,7 +232,7 @@ function Problem() {
           ].map((p) => (
             <div key={p.k} className="bg-background p-6 sm:p-8">
               <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight">{p.v}</p>
+              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight [overflow-wrap:anywhere]">{p.v}</p>
             </div>
           ))}
         </div>
