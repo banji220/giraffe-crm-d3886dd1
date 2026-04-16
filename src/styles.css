@@ -45,40 +45,40 @@
   :root {
     --radius: 0.75rem;
 
-    /* Brand palette */
-    --cream: oklch(0.975 0.018 90);
-    --ink: oklch(0.18 0.02 60);
-    --brand: oklch(0.82 0.16 82);            /* warm mustard yellow */
-    --brand-deep: oklch(0.62 0.16 60);       /* deeper amber for accents */
-    --brand-foreground: oklch(0.18 0.02 60);
-
-    /* Semantic */
-    --background: var(--cream);
-    --foreground: var(--ink);
-    --card: oklch(1 0 0);
-    --card-foreground: var(--ink);
-    --popover: oklch(1 0 0);
-    --popover-foreground: var(--ink);
-    --primary: var(--ink);
-    --primary-foreground: var(--cream);
-    --secondary: oklch(0.94 0.02 85);
-    --secondary-foreground: var(--ink);
-    --muted: oklch(0.94 0.02 85);
-    --muted-foreground: oklch(0.45 0.02 60);
-    --accent: var(--brand);
-    --accent-foreground: var(--ink);
+    /* Mandatory brand palette */
+    --background: oklch(0.97 0.005 80);
+    --foreground: oklch(0.15 0.02 50);
+    --card: oklch(0.99 0.003 80);
+    --card-foreground: oklch(0.15 0.02 50);
+    --popover: oklch(0.99 0.003 80);
+    --popover-foreground: oklch(0.15 0.02 50);
+    --primary: oklch(0.65 0.22 45);
+    --primary-foreground: oklch(0.99 0.005 80);
+    --secondary: oklch(0.93 0.02 80);
+    --secondary-foreground: oklch(0.15 0.02 50);
+    --muted: oklch(0.93 0.015 80);
+    --muted-foreground: oklch(0.5 0.03 50);
+    --accent: oklch(0.85 0.15 85);
+    --accent-foreground: oklch(0.15 0.02 50);
     --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.984 0.003 247.858);
-    --border: oklch(0.88 0.02 80);
-    --input: oklch(0.88 0.02 80);
-    --ring: var(--brand);
+    --destructive-foreground: oklch(0.99 0.005 80);
+    --border: oklch(0.15 0.02 50);
+    --input: oklch(0.15 0.02 50);
+    --ring: oklch(0.65 0.22 45);
+
+    /* Semantic aliases mapped to mandatory tokens */
+    --cream: oklch(0.97 0.005 80);
+    --ink: oklch(0.15 0.02 50);
+    --brand: oklch(0.85 0.15 85);
+    --brand-deep: oklch(0.65 0.22 45);
+    --brand-foreground: oklch(0.15 0.02 50);
 
     --font-display: "Fraunces", "Georgia", serif;
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
-    --shadow-brand: 0 20px 60px -20px color-mix(in oklab, var(--brand) 55%, transparent);
-    --shadow-card: 0 1px 0 0 color-mix(in oklab, var(--ink) 8%, transparent),
-                   0 20px 40px -24px color-mix(in oklab, var(--ink) 25%, transparent);
+    --shadow-brand: 0 20px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+    --shadow-card: 0 1px 0 0 color-mix(in oklab, var(--foreground) 10%, transparent),
+                   0 20px 40px -24px color-mix(in oklab, var(--foreground) 25%, transparent);
   }
 
   .dark {
