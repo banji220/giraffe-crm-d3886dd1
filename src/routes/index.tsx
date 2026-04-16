@@ -362,16 +362,16 @@ function FinalCTA() {
   return (
     <section className="bg-primary text-primary-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 text-center">
-        <div className="label-mono text-xs mb-6 sm:mb-8">Ready?</div>
-        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
+        <div className="t-label mb-6 sm:mb-8">Ready?</div>
+        <h2 className="t-hero">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7] [overflow-wrap:anywhere]">
+        <p className="mt-6 sm:mt-8 t-body max-w-md mx-auto opacity-90 [overflow-wrap:anywhere]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
           href={APP_URL}
-          className="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-foreground text-background border-2 border-foreground px-6 py-4 sm:px-8 sm:py-5 label-mono text-xs hover:bg-background hover:text-foreground transition-colors"
+          className="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-foreground text-background border-2 border-foreground px-6 py-4 sm:px-8 sm:py-5 t-label hover:bg-background hover:text-foreground transition-colors"
         >
           Open the app <Arrow />
         </a>
