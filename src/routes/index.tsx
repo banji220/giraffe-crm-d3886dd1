@@ -107,7 +107,7 @@ function Hero() {
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
                 href={APP_URL}
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
