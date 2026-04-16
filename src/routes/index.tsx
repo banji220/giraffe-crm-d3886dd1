@@ -43,21 +43,21 @@ function Index() {
 /* ---------- Header ---------- */
 function Header() {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b-2 border-border/60">
+    <header className="sticky top-0 z-40 bg-background border-b-2 border-foreground">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Wordmark />
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-8 text-base font-medium text-muted-foreground">
           <a href="#features" className="hover:text-foreground transition-colors">Features</a>
           <a href="#workflow" className="hover:text-foreground transition-colors">How it works</a>
           <a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a>
         </nav>
         <div className="flex items-center gap-3">
-          <a href="#login" className="hidden sm:inline text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <a href="#login" className="hidden sm:inline text-base font-medium text-muted-foreground hover:text-foreground transition-colors">
             Sign in
           </a>
           <a
             href="#start"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 text-base font-semibold hover:opacity-90 transition-opacity"
           >
             Start free
             <ArrowRight className="w-4 h-4" />
@@ -78,7 +78,7 @@ function Wordmark() {
         height={36}
         className="w-9 h-9 group-hover:rotate-[-6deg] transition-transform"
       />
-      <span className="font-display text-2xl font-bold tracking-tight">
+      <span className="font-display text-3xl font-bold tracking-tight">
         <span className="text-brand">Giraffe!</span>
       </span>
     </Link>
@@ -89,19 +89,19 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
+      
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-12 items-center relative">
         <div className="lg:col-span-6 space-y-8">
           <div className="inline-flex items-center gap-2 border-2 border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
             <span className="w-1.5 h-1.5 bg-brand" />
             Built for window cleaning crews
           </div>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+          <h1 className="font-display text-6xl sm:text-6xl lg:text-6xl leading-[0.95] tracking-tight">
             Knock.<br />
             Quote.<br />
             <span className="text-brand">Close.</span>
           </h1>
-          <p className="text-lg text-muted-foreground max-w-md leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-md leading-relaxed">
             Giraffe is the field sales CRM for door-to-door window cleaners. Map your route,
             quote on the porch, and close the deal before you walk to the next house.
           </p>
@@ -120,7 +120,7 @@ function Hero() {
               See it in action
             </a>
           </div>
-          <div className="flex items-center gap-6 pt-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-6 pt-4 text-base text-muted-foreground">
             <Stat n="38%" label="Higher close rate" />
             <div className="w-px h-8 bg-border-2" />
             <Stat n="2.4x" label="More quotes/day" />
@@ -130,7 +130,7 @@ function Hero() {
         </div>
 
         <div className="lg:col-span-6 relative">
-          <div className="absolute -inset-6 spot-pattern ] rotate-2 opacity-90" />
+          
           <div className="relative ] overflow-hidden border-4 border-foreground">
             <img
               src={heroImg}
@@ -149,7 +149,7 @@ function Hero() {
               </span>
               <span className="text-xs text-brand-deep font-bold">Closed ✓</span>
             </div>
-            <div className="font-mono text-2xl font-bold">$340.00</div>
+            <div className="font-mono text-3xl font-bold">$340.00</div>
             <div className="text-xs text-muted-foreground mt-1">
               14 windows · biweekly · 712 Maple St.
             </div>
@@ -172,7 +172,7 @@ function Hero() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="font-mono text-2xl font-bold text-foreground">{n}</div>
+      <div className="font-mono text-3xl font-bold text-foreground">{n}</div>
       <div className="text-xs label-mono">{label}</div>
     </div>
   );
@@ -192,7 +192,7 @@ function Marquee() {
     <div className="border-y-2 border-border bg-foreground text-background overflow-hidden">
       <div className="flex gap-12 py-4 whitespace-nowrap animate-[marquee_30s_linear_infinite]">
         {[...items, ...items, ...items].map((t, i) => (
-          <span key={i} className="font-display text-xl flex items-center gap-12">
+          <span key={i} className="font-display text-3xl flex items-center gap-12">
             {t}
             <span className="text-brand">●</span>
           </span>
@@ -242,10 +242,10 @@ function Features() {
     <section id="features" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm text-brand-deep mb-4 label-mono">
+          <div className="text-base text-brand-deep mb-4 label-mono">
             Built for the porch, not the boardroom
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
+          <h2 className="font-display text-6xl lg:text-6xl tracking-tight">
             Everything you need on a phone.{" "}
             <span className="italic text-muted-foreground">Nothing you don't.</span>
           </h2>
@@ -260,8 +260,8 @@ function Features() {
               <div className="w-12 h-12 bg-brand text-brand-foreground flex items-center justify-center mb-5">
                 {f.icon}
               </div>
-              <h3 className="font-display text-xl mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+              <h3 className="font-display text-3xl mb-2">{f.title}</h3>
+              <p className="text-base text-muted-foreground leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>
@@ -292,26 +292,19 @@ function Heatmap() {
   const hot = totals[3] + totals[4] + totals[5];
 
   return (
-    <section className="py-24 lg:py-32 bg-secondary/60 border-y-2 border-border/60">
+    <section className="py-24 lg:py-32 bg-secondary/60 border-y-2 border-foreground">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 space-y-6">
-          <div className="text-sm label-mono"
+          <div className="text-base label-mono"
                style={{ color: "var(--heat-4)" }}>
             The Door Heatmap
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
+          <h2 className="font-display text-6xl lg:text-6xl tracking-tight">
             See your neighborhood{" "}
-            <span style={{
-              backgroundImage: "var(--gradient-heat)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}>
-              light up
-            </span>
+            <span style={{ color: "var(--heat-4)" }}>light up</span>
             .
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+          <p className="text-muted-foreground text-base leading-relaxed">
             Every knock leaves a trace. Cold doors fade. Warm leads glow.
             Closes burn bright. Walk into tomorrow knowing exactly where the money lives.
           </p>
@@ -397,14 +390,13 @@ function Workflow() {
   ];
   return (
     <section id="workflow" className="py-24 lg:py-32 bg-foreground text-background relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-           style={{ backgroundImage: "radial-gradient(currentColor 1.5px, transparent 1.5px)", backgroundSize: "24px 24px" }} />
+      
       <div className="mx-auto max-w-7xl px-6 relative">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm text-brand mb-4 label-mono">
+          <div className="text-base text-brand mb-4 label-mono">
             The Giraffe loop
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
+          <h2 className="font-display text-6xl lg:text-6xl tracking-tight">
             Three taps from <span className="text-brand">"hello"</span> to <span className="italic">"booked."</span>
           </h2>
         </div>
@@ -412,8 +404,8 @@ function Workflow() {
         <div className="grid md:grid-cols-3 gap-px bg-background/10 overflow-hidden">
           {steps.map((s) => (
             <div key={s.n} className="bg-foreground p-8 lg:p-10">
-              <div className="font-mono text-7xl font-bold text-brand mb-6">{s.n}</div>
-              <div className="font-display text-2xl mb-3">{s.t}</div>
+              <div className="font-mono text-6xl font-bold text-brand mb-6">{s.n}</div>
+              <div className="font-display text-3xl mb-3">{s.t}</div>
               <p className="text-background/70 leading-relaxed">{s.b}</p>
             </div>
           ))}
@@ -429,10 +421,10 @@ function Pricing() {
     <section id="pricing" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-16">
-          <div className="text-sm text-brand-deep mb-4 label-mono">
+          <div className="text-base text-brand-deep mb-4 label-mono">
             Simple pricing
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl tracking-tight">
+          <h2 className="font-display text-6xl lg:text-6xl tracking-tight">
             One plan. Pays for itself by Tuesday.
           </h2>
         </div>
@@ -446,18 +438,18 @@ function Pricing() {
               <div>
                 <div className="font-mono text-6xl font-bold mb-2 tracking-tight">
                   $39
-                  <span className="text-lg text-muted-foreground font-sans font-normal">/rep/mo</span>
+                  <span className="text-base text-muted-foreground font-sans font-normal">/rep/mo</span>
                 </div>
                 <p className="text-muted-foreground">Everything. No tiers. No surprise add-ons.</p>
                 <a
                   href="#start"
-                  className="mt-6 inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-sm font-semibold hover:opacity-90"
+                  className="mt-6 inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-base font-semibold hover:opacity-90"
                 >
                   Start 14-day free trial
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 text-base">
                 {[
                   "Unlimited doors, quotes, jobs",
                   "Same-day payouts (card + ACH)",
@@ -477,15 +469,15 @@ function Pricing() {
 
           <div className="bg-secondary p-8 flex flex-col justify-between">
             <div>
-              <div className="font-display text-2xl mb-3">Solo crew?</div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <div className="font-display text-3xl mb-3">Solo crew?</div>
+              <p className="text-muted-foreground text-base leading-relaxed">
                 One person, one truck. Use Giraffe free forever — capped at 50 doors per day.
                 Upgrade when you hire your second pair of hands.
               </p>
             </div>
             <a
               href="#start"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-brand-deep"
+              className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-foreground hover:text-brand-deep"
             >
               Get the free plan
               <ArrowRight className="w-4 h-4" />
@@ -502,12 +494,12 @@ function CTA() {
   return (
     <section id="start" className="pb-24 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative spot-pattern ] p-12 lg:p-20 text-center overflow-hidden border-4 border-foreground">
+        <div className="relative bg-brand p-12 lg:p-20 text-center overflow-hidden border-4 border-foreground">
           <div className="relative max-w-2xl mx-auto">
-            <h2 className="font-display text-4xl lg:text-6xl text-foreground tracking-tight">
+            <h2 className="font-display text-6xl lg:text-6xl text-foreground tracking-tight">
               Every door counts.
             </h2>
-            <p className="mt-4 text-foreground/80 text-lg">
+            <p className="mt-4 text-foreground/80 text-base">
               Stop losing quotes to paper, texts, and memory. Start closing more, faster.
             </p>
             <a
@@ -517,7 +509,7 @@ function CTA() {
               Start your free trial
               <ArrowRight className="w-4 h-4" />
             </a>
-            <div className="mt-4 text-sm text-foreground/70">
+            <div className="mt-4 text-base text-foreground/70">
               No credit card. Knock today, close tomorrow.
             </div>
           </div>
@@ -534,10 +526,10 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
-          <span className="font-display text-lg font-bold text-brand">Giraffe!</span>
-          <span className="text-sm text-muted-foreground ml-2">© {new Date().getFullYear()}</span>
+          <span className="font-display text-base font-bold text-brand">Giraffe!</span>
+          <span className="text-base text-muted-foreground ml-2">© {new Date().getFullYear()}</span>
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-base text-muted-foreground">
           Knock. Quote. Close.
         </div>
       </div>
