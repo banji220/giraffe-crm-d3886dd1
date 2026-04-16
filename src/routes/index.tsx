@@ -461,59 +461,27 @@ function HeatmapSection() {
 }
 
 function MobileHeatmap() {
-  // 90 days laid out as 10 columns × 9 rows for big, intentional cells on phones
-  const cols = 10;
-  const rows = 9;
-  const total = cols * rows; // 90
-  const cells: number[] = [];
-  let seed = 47;
-  for (let i = 0; i < total; i++) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const r = seed / 233280;
-    const ramp = i / total;
-    const boost = ramp * 0.45;
-    const x = r + boost;
-    const v =
-      x < 0.38 ? 0 :
-      x < 0.6 ? 1 :
-      x < 0.78 ? 2 :
-      x < 0.9 ? 3 :
-      x < 0.97 ? 4 : 5;
-    cells.push(v);
-  }
-  const rangeLabels = ["90 days ago", "45 days ago", "Today"];
+  // Real month-view: last 3 months as proper calendar grids
+  const months = getRecentMonths(3);
+  const monthsWithValues = months.map((m, idx) => ({
+    month: m,
+    values: generateMonthValues(m.daysInMonth, 47 + idx * 71, 0.08 + idx * 0.14),
+  }));
 
   return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-3">
-        <div className="t-label">Last 90 days</div>
+    <div className="border-2 border-foreground bg-card p-5">
+      <div className="flex items-center justify-between mb-5">
+        <div className="t-label">Last 3 months</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
-      <div
-        className="grid gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-        }}
-      >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/15 rounded-[3px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+      <div className="space-y-7">
+        {monthsWithValues.map(({ month, values }) => (
+          <MonthCalendar key={`${month.year}-${month.name}`} month={month} values={values} />
         ))}
       </div>
 
-      <div className="mt-3 flex items-center justify-between t-label text-muted-foreground">
-        {rangeLabels.map((m) => (
-          <span key={m}>{m}</span>
-        ))}
-      </div>
-
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-6 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
         <div className="t-label text-muted-foreground">Activity</div>
         <div className="flex items-center gap-1.5">
           <span className="t-label text-muted-foreground mr-1">Less</span>
