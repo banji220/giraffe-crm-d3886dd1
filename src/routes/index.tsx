@@ -221,8 +221,8 @@ function Problem() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32">
         <div className="t-label text-primary mb-6 sm:mb-8">The problem</div>
         <h2 className="t-section max-w-5xl">
-          Your CRM wasn't built<br />
-          for the <span className="text-primary">doorstep.</span>
+          Your CRM wasn't built for the{" "}
+          <span className="text-primary">doorstep.</span>
         </h2>
         <div className="mt-10 sm:mt-16 grid md:grid-cols-3 gap-px bg-foreground/20">
           {[
