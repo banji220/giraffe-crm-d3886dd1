@@ -363,10 +363,10 @@ function FinalCTA() {
     <section className="bg-primary text-primary-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 text-center">
         <div className="label-mono text-xs mb-6 sm:mb-8">Ready?</div>
-        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[0.9] sm:leading-[0.85] tracking-tight">
+        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90">
+        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
