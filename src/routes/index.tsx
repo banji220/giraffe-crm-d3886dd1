@@ -184,13 +184,13 @@ function ContributionGrid() {
         ))}
       </div>
 
-      <div className="mt-5 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+      <div className="mt-5 pt-4 border-t-2 border-foreground flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div className="grid grid-cols-2 gap-x-6 gap-y-2">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="label-mono text-xs text-muted-foreground mr-1">Less</span>
+          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
@@ -198,7 +198,7 @@ function ContributionGrid() {
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
-          <span className="label-mono text-xs text-muted-foreground ml-1">More</span>
+          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground ml-1">More</span>
         </div>
       </div>
     </div>
