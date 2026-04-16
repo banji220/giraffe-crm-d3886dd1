@@ -163,8 +163,8 @@ function ContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-5">
       <div className="flex items-center justify-between mb-4">
-        <div className="label-mono text-xs">Last 365 days</div>
-        <div className="label-mono text-xs text-muted-foreground">Sample</div>
+        <div className="t-label">Last 365 days</div>
+        <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
