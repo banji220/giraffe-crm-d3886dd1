@@ -178,4 +178,68 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
   }
+
+  /* ---------- Mobile-first typography scale ----------
+     Strong hierarchy that scales from 320px → desktop.
+     Mobile sizes deliberately small to avoid overflow.
+  */
+  .t-hero {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.75rem, 12vw, 9rem);   /* 44px → 144px */
+    line-height: 1.05;
+  }
+  @media (min-width: 1024px) {
+    .t-hero { line-height: 0.85; }
+  }
+
+  .t-section {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.25rem, 9vw, 6rem);    /* 36px → 96px */
+    line-height: 1.1;
+  }
+  @media (min-width: 1024px) {
+    .t-section { line-height: 0.92; }
+  }
+
+  .t-display-sm {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.5rem, 5vw, 1.875rem); /* 24px → 30px */
+    line-height: 1.25;
+  }
+
+  .t-step {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 8vw, 3.75rem);  /* 40px → 60px */
+    line-height: 1.05;
+  }
+
+  .t-body {
+    font-size: clamp(0.875rem, 2.4vw, 1rem); /* 14px → 16px */
+    line-height: 1.7;
+  }
+
+  .t-label {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: clamp(0.625rem, 1.6vw, 0.75rem); /* 10px → 12px */
+    line-height: 1.4;
+  }
+
+  .t-stat {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 7vw, 3.75rem); /* 30px → 60px */
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
 }
