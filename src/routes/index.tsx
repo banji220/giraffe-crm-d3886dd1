@@ -218,21 +218,21 @@ function Stat({ n, label }: { n: string; label: string }) {
 function Problem() {
   return (
     <section className="dark bg-background text-foreground border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
-        <div className="label-mono text-xs text-primary mb-8">The problem</div>
-        <h2 className="font-display text-6xl lg:text-[6rem] leading-[0.9] tracking-tight max-w-5xl">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
+        <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The problem</div>
+        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[0.95] sm:leading-[0.9] tracking-tight max-w-5xl">
           Your CRM wasn't built<br />
           for the <span className="text-primary">doorstep.</span>
         </h2>
-        <div className="mt-16 grid md:grid-cols-3 gap-px bg-foreground/20">
+        <div className="mt-10 sm:mt-16 grid md:grid-cols-3 gap-px bg-foreground/20">
           {[
             { k: "Spreadsheets", v: "Lose half your leads to a notes app you'll never re-open." },
             { k: "Enterprise CRM", v: "47 fields per contact. You needed 3. The deal walked." },
             { k: "Pen & paper", v: "Rain. Wind. Memory. The quote you wrote yesterday is gone." },
           ].map((p) => (
-            <div key={p.k} className="bg-background p-8">
+            <div key={p.k} className="bg-background p-6 sm:p-8">
               <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-3xl leading-tight">{p.v}</p>
+              <p className="font-display text-2xl sm:text-3xl leading-tight">{p.v}</p>
             </div>
           ))}
         </div>
