@@ -70,7 +70,7 @@ function Header() {
             href={APP_URL}
             className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 label-mono text-[10px] sm:text-xs hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
           >
-            <span className="hidden xs:inline">Start knocking</span><span className="xs:hidden">Start</span> <Arrow />
+            Start knocking <Arrow />
           </a>
         </div>
       </div>
