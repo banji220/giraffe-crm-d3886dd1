@@ -190,7 +190,7 @@ function ContributionGrid() {
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground mr-1">Less</span>
+          <span className="t-label text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
@@ -198,7 +198,7 @@ function ContributionGrid() {
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
-          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground ml-1">More</span>
+          <span className="t-label text-muted-foreground ml-1">More</span>
         </div>
       </div>
     </div>
