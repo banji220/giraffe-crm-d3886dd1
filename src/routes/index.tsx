@@ -43,7 +43,7 @@ function Index() {
 /* ---------- Header ---------- */
 function Header() {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b-2 border-border/60">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Wordmark />
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
@@ -57,7 +57,7 @@ function Header() {
           </a>
           <a
             href="#start"
-            className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 text-sm font-semibold hover:opacity-90 transition-opacity"
           >
             Start free
             <ArrowRight className="w-4 h-4" />
@@ -92,8 +92,8 @@ function Hero() {
       <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-12 items-center relative">
         <div className="lg:col-span-6 space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+          <div className="inline-flex items-center gap-2 border-2 border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground">
+            <span className="w-1.5 h-1.5 bg-brand" />
             Built for window cleaning crews
           </div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
@@ -108,7 +108,7 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#start"
-              className="inline-flex items-center gap-2 rounded-full bg-brand text-brand-foreground px-6 py-3.5 text-base font-semibold shadow-brand hover:translate-y-[-2px] transition-transform"
+              className="inline-flex items-center gap-2 bg-brand text-brand-foreground px-6 py-3.5 text-base font-semibold hover:translate-y-[-2px] transition-transform"
             >
               Start free — 14 days
               <ArrowRight className="w-4 h-4" />
@@ -122,16 +122,16 @@ function Hero() {
           </div>
           <div className="flex items-center gap-6 pt-4 text-sm text-muted-foreground">
             <Stat n="38%" label="Higher close rate" />
-            <div className="w-px h-8 bg-border" />
+            <div className="w-px h-8 bg-border-2" />
             <Stat n="2.4x" label="More quotes/day" />
-            <div className="w-px h-8 bg-border" />
+            <div className="w-px h-8 bg-border-2" />
             <Stat n="$0" label="Setup fee" />
           </div>
         </div>
 
         <div className="lg:col-span-6 relative">
-          <div className="absolute -inset-6 spot-pattern rounded-[2rem] rotate-2 opacity-90" />
-          <div className="relative rounded-[1.75rem] overflow-hidden border-4 border-foreground shadow-card">
+          <div className="absolute -inset-6 spot-pattern ] rotate-2 opacity-90" />
+          <div className="relative ] overflow-hidden border-4 border-foreground">
             <img
               src={heroImg}
               alt="Window cleaner quoting a homeowner on the porch"
@@ -142,7 +142,7 @@ function Hero() {
           </div>
 
           {/* Floating quote card */}
-          <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-4 shadow-card max-w-[260px] hidden sm:block">
+          <div className="absolute -bottom-6 -left-6 bg-card border-2 border-border p-4 max-w-[260px] hidden sm:block">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs text-muted-foreground label-mono">
                 Quote sent
@@ -156,8 +156,8 @@ function Hero() {
           </div>
 
           {/* Floating route pin */}
-          <div className="absolute -top-4 -right-2 bg-foreground text-background rounded-2xl px-4 py-3 shadow-card hidden sm:flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
+          <div className="absolute -top-4 -right-2 bg-foreground text-background px-4 py-3 hidden sm:flex items-center gap-3">
+            <div className="w-2 h-2 bg-brand animate-pulse" />
             <div>
               <div className="text-xs opacity-70">Today's route</div>
               <div className="font-bold">42 doors left</div>
@@ -189,7 +189,7 @@ function Marquee() {
     "One-tap close",
   ];
   return (
-    <div className="border-y border-border bg-foreground text-background overflow-hidden">
+    <div className="border-y-2 border-border bg-foreground text-background overflow-hidden">
       <div className="flex gap-12 py-4 whitespace-nowrap animate-[marquee_30s_linear_infinite]">
         {[...items, ...items, ...items].map((t, i) => (
           <span key={i} className="font-display text-xl flex items-center gap-12">
@@ -255,9 +255,9 @@ function Features() {
           {features.map((f, i) => (
             <div
               key={i}
-              className="group relative bg-card border border-border rounded-3xl p-7 hover:border-foreground transition-all hover:-translate-y-1"
+              className="group relative bg-card border-2 border-border p-7 hover:border-foreground transition-all hover:-translate-y-1"
             >
-              <div className="w-12 h-12 rounded-xl bg-brand text-brand-foreground flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-brand text-brand-foreground flex items-center justify-center mb-5">
                 {f.icon}
               </div>
               <h3 className="font-display text-xl mb-2">{f.title}</h3>
@@ -292,7 +292,7 @@ function Heatmap() {
   const hot = totals[3] + totals[4] + totals[5];
 
   return (
-    <section className="py-24 lg:py-32 bg-secondary/60 border-y border-border/60">
+    <section className="py-24 lg:py-32 bg-secondary/60 border-y-2 border-border/60">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 space-y-6">
           <div className="text-sm label-mono"
@@ -321,7 +321,7 @@ function Heatmap() {
             {[0, 1, 2, 3, 4, 5].map((lvl) => (
               <span
                 key={lvl}
-                className="w-6 h-6 rounded-md border"
+                className="w-6 h-6 border-2"
                 style={{
                   backgroundColor: heatVar(lvl),
                   borderColor: "color-mix(in oklab, var(--foreground) 15%, transparent)",
@@ -340,13 +340,13 @@ function Heatmap() {
         </div>
 
         <div className="lg:col-span-7">
-          <div className="bg-card border border-border rounded-3xl p-5 lg:p-7 shadow-card">
+          <div className="bg-card border-2 border-border p-5 lg:p-7">
             <div className="flex items-center justify-between mb-4">
               <div className="text-xs text-muted-foreground label-mono">
                 Maple Grove · Tuesday
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span className="w-2 h-2 rounded-full animate-pulse"
+                <span className="w-2 h-2 animate-pulse"
                       style={{ backgroundColor: "var(--heat-5)" }} />
                 Live
               </div>
@@ -358,7 +358,7 @@ function Heatmap() {
               {cells.map((v, i) => (
                 <div
                   key={i}
-                  className="aspect-square rounded-[4px] transition-transform hover:scale-125 hover:z-10"
+                  className="aspect-square ] transition-transform hover:scale-125 hover:z-10"
                   style={{
                     backgroundColor: heatVar(v),
                     animation: `heatPulse 4s ease-in-out ${(i % 12) * 0.15}s infinite`,
@@ -409,7 +409,7 @@ function Workflow() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-background/10 rounded-3xl overflow-hidden">
+        <div className="grid md:grid-cols-3 gap-px bg-background/10 overflow-hidden">
           {steps.map((s) => (
             <div key={s.n} className="bg-foreground p-8 lg:p-10">
               <div className="font-mono text-7xl font-bold text-brand mb-6">{s.n}</div>
@@ -438,8 +438,8 @@ function Pricing() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
-          <div className="lg:col-span-2 relative bg-card border-2 border-foreground rounded-3xl p-8 lg:p-12 shadow-card">
-            <div className="absolute -top-3 left-8 bg-brand text-brand-foreground text-xs px-3 py-1 rounded-full label-mono">
+          <div className="lg:col-span-2 relative bg-card border-2 border-foreground p-8 lg:p-12">
+            <div className="absolute -top-3 left-8 bg-brand text-brand-foreground text-xs px-3 py-1 label-mono">
               Crew
             </div>
             <div className="grid sm:grid-cols-2 gap-8 items-center">
@@ -451,7 +451,7 @@ function Pricing() {
                 <p className="text-muted-foreground">Everything. No tiers. No surprise add-ons.</p>
                 <a
                   href="#start"
-                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:opacity-90"
+                  className="mt-6 inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-sm font-semibold hover:opacity-90"
                 >
                   Start 14-day free trial
                   <ArrowRight className="w-4 h-4" />
@@ -475,7 +475,7 @@ function Pricing() {
             </div>
           </div>
 
-          <div className="bg-secondary rounded-3xl p-8 flex flex-col justify-between">
+          <div className="bg-secondary p-8 flex flex-col justify-between">
             <div>
               <div className="font-display text-2xl mb-3">Solo crew?</div>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -502,7 +502,7 @@ function CTA() {
   return (
     <section id="start" className="pb-24 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative spot-pattern rounded-[2rem] p-12 lg:p-20 text-center overflow-hidden border-4 border-foreground">
+        <div className="relative spot-pattern ] p-12 lg:p-20 text-center overflow-hidden border-4 border-foreground">
           <div className="relative max-w-2xl mx-auto">
             <h2 className="font-display text-4xl lg:text-6xl text-foreground tracking-tight">
               Every door counts.
@@ -512,7 +512,7 @@ function CTA() {
             </p>
             <a
               href="#signup"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-4 text-base font-semibold hover:translate-y-[-2px] transition-transform"
+              className="mt-8 inline-flex items-center gap-2 bg-foreground text-background px-7 py-4 text-base font-semibold hover:translate-y-[-2px] transition-transform"
             >
               Start your free trial
               <ArrowRight className="w-4 h-4" />
@@ -530,7 +530,7 @@ function CTA() {
 /* ---------- Footer ---------- */
 function Footer() {
   return (
-    <footer className="border-t border-border py-10">
+    <footer className="border-t-2 border-border py-10">
       <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
