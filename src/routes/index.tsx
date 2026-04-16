@@ -219,8 +219,8 @@ function Problem() {
   return (
     <section className="dark bg-background text-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
-        <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The problem</div>
-        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] tracking-tight max-w-5xl">
+        <div className="t-label text-primary mb-6 sm:mb-8">The problem</div>
+        <h2 className="t-section max-w-5xl">
           Your CRM wasn't built<br />
           for the <span className="text-primary">doorstep.</span>
         </h2>
@@ -231,8 +231,8 @@ function Problem() {
             { k: "Pen & paper", v: "Rain. Wind. Memory. The quote you wrote yesterday is gone." },
           ].map((p) => (
             <div key={p.k} className="bg-background p-6 sm:p-8">
-              <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight [overflow-wrap:anywhere]">{p.v}</p>
+              <div className="t-label text-primary mb-3">{p.k}</div>
+              <p className="t-display-sm [overflow-wrap:anywhere]">{p.v}</p>
             </div>
           ))}
         </div>
