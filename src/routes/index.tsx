@@ -57,7 +57,7 @@ function Index() {
 function Header() {
   return (
     <header className="sticky top-0 z-40 bg-background border-b-2 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
         <Wordmark />
         <div className="flex items-center gap-3">
           <a
@@ -68,7 +68,7 @@ function Header() {
           </a>
           <a
             href={APP_URL}
-            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-4 py-2 label-mono text-xs hover:bg-primary hover:border-primary transition-colors"
+            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 label-mono text-[10px] sm:text-xs hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
           >
             Start knocking <Arrow />
           </a>
@@ -80,9 +80,9 @@ function Header() {
 
 function Wordmark() {
   return (
-    <Link to="/" className="flex items-center gap-2.5">
-      <img src="/logo.png" alt="Giraffe CRM" width={36} height={36} className="w-9 h-9" />
-      <span className="font-display text-3xl text-brand">Giraffe!</span>
+    <Link to="/" className="flex items-center gap-2">
+      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9" />
+      <span className="font-display text-2xl sm:text-3xl text-brand">Giraffe!</span>
     </Link>
   );
 }
@@ -91,7 +91,7 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7 space-y-8">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 label-mono text-xs">
@@ -184,13 +184,13 @@ function ContributionGrid() {
         ))}
       </div>
 
-      <div className="mt-5 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+      <div className="mt-5 pt-4 border-t-2 border-foreground flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div className="grid grid-cols-2 gap-x-6 gap-y-2">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="label-mono text-xs text-muted-foreground mr-1">Less</span>
+          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
@@ -198,7 +198,7 @@ function ContributionGrid() {
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
-          <span className="label-mono text-xs text-muted-foreground ml-1">More</span>
+          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground ml-1">More</span>
         </div>
       </div>
     </div>
