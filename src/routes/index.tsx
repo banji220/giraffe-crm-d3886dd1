@@ -62,13 +62,13 @@ function Header() {
         <div className="flex items-center gap-3">
           <a
             href={APP_URL}
-            className="hidden sm:inline-flex label-mono text-xs text-foreground hover:text-primary"
+            className="hidden sm:inline-flex t-label text-foreground hover:text-primary"
           >
             Sign in
           </a>
           <a
             href={APP_URL}
-            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 label-mono text-[10px] sm:text-xs hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 bg-foreground text-background border-2 border-foreground px-3 py-2 sm:px-4 t-label hover:bg-primary hover:border-primary transition-colors whitespace-nowrap"
           >
             Start knocking <Arrow />
           </a>
@@ -94,29 +94,29 @@ function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-            <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 label-mono text-xs">
+            <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Window Cleaning
             </div>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-[7rem] xl:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
+            <h1 className="t-hero">
               Knock.<br />
               Quote.<br />
               <span className="text-primary">Close.</span>
             </h1>
-            <p className="text-sm sm:text-base max-w-md text-muted-foreground leading-[1.7] [overflow-wrap:anywhere]">
+            <p className="t-body max-w-md text-muted-foreground [overflow-wrap:anywhere]">
               The field sales CRM for door-to-door window cleaning crews.
               Map the route, quote on the porch, close before you walk away.
             </p>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
               <a
                 href={APP_URL}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
+                className="inline-flex items-center gap-3 bg-primary text-primary-foreground border-2 border-foreground px-6 py-4 t-label hover:bg-foreground hover:text-background transition-colors"
               >
                 Start knocking <Arrow />
               </a>
               <a
                 href={APP_URL}
-                className="inline-flex items-center gap-3 bg-background text-foreground border-2 border-foreground px-6 py-4 label-mono text-xs hover:bg-foreground hover:text-background transition-colors"
+                className="inline-flex items-center gap-3 bg-background text-foreground border-2 border-foreground px-6 py-4 t-label hover:bg-foreground hover:text-background transition-colors"
               >
                 Sign in
               </a>
@@ -163,8 +163,8 @@ function ContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-5">
       <div className="flex items-center justify-between mb-4">
-        <div className="label-mono text-xs">Last 365 days</div>
-        <div className="label-mono text-xs text-muted-foreground">Sample</div>
+        <div className="t-label">Last 365 days</div>
+        <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
@@ -190,7 +190,7 @@ function ContributionGrid() {
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground mr-1">Less</span>
+          <span className="t-label text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
@@ -198,7 +198,7 @@ function ContributionGrid() {
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
-          <span className="label-mono text-[10px] sm:text-xs text-muted-foreground ml-1">More</span>
+          <span className="t-label text-muted-foreground ml-1">More</span>
         </div>
       </div>
     </div>
@@ -208,8 +208,8 @@ function ContributionGrid() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="font-mono font-bold text-3xl">{n}</div>
-      <div className="label-mono text-xs text-muted-foreground">{label}</div>
+      <div className="t-stat">{n}</div>
+      <div className="t-label text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
@@ -219,8 +219,8 @@ function Problem() {
   return (
     <section className="dark bg-background text-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
-        <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The problem</div>
-        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] tracking-tight max-w-5xl">
+        <div className="t-label text-primary mb-6 sm:mb-8">The problem</div>
+        <h2 className="t-section max-w-5xl">
           Your CRM wasn't built<br />
           for the <span className="text-primary">doorstep.</span>
         </h2>
@@ -231,8 +231,8 @@ function Problem() {
             { k: "Pen & paper", v: "Rain. Wind. Memory. The quote you wrote yesterday is gone." },
           ].map((p) => (
             <div key={p.k} className="bg-background p-6 sm:p-8">
-              <div className="label-mono text-xs text-primary mb-3">{p.k}</div>
-              <p className="font-display text-2xl sm:text-3xl leading-[1.25] sm:leading-tight [overflow-wrap:anywhere]">{p.v}</p>
+              <div className="t-label text-primary mb-3">{p.k}</div>
+              <p className="t-display-sm [overflow-wrap:anywhere]">{p.v}</p>
             </div>
           ))}
         </div>
@@ -251,19 +251,19 @@ function HowItWorks() {
   return (
     <section className="border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
-        <div className="label-mono text-xs mb-6 sm:mb-8">How it works</div>
-        <h2 className="font-display text-4xl sm:text-6xl lg:text-[6rem] leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] tracking-tight max-w-4xl mb-10 sm:mb-16">
+        <div className="t-label mb-6 sm:mb-8">How it works</div>
+        <h2 className="t-section max-w-4xl mb-10 sm:mb-16">
           Three taps. <span className="text-primary">One sale.</span>
         </h2>
 
         <div className="grid md:grid-cols-3 gap-px bg-foreground border-2 border-foreground">
           {steps.map((s) => (
             <div key={s.n} className="bg-background p-6 sm:p-8 lg:p-10">
-              <div className="font-mono font-bold text-5xl sm:text-6xl text-primary leading-none mb-6 sm:mb-8">
+              <div className="t-step text-primary mb-6 sm:mb-8 font-mono">
                 {s.n}
               </div>
-              <div className="font-display text-5xl sm:text-6xl leading-[1.05] sm:leading-none mb-4 sm:mb-6">{s.t}.</div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed [overflow-wrap:anywhere]">{s.b}</p>
+              <div className="t-step mb-4 sm:mb-6">{s.t}.</div>
+              <p className="t-body text-muted-foreground [overflow-wrap:anywhere]">{s.b}</p>
             </div>
           ))}
         </div>
@@ -279,15 +279,15 @@ function HeatmapSection() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
-            <div className="label-mono text-xs text-primary mb-6 sm:mb-8">The Heatmap</div>
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-[7rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.88] tracking-tight">
+            <div className="t-label text-primary mb-6 sm:mb-8">The Heatmap</div>
+            <h2 className="t-hero">
               See your year.<br />
               Every knock<br />
               <span className="text-primary">counted.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] sm:leading-relaxed border-l-4 border-foreground pl-5 [overflow-wrap:anywhere]">
+            <p className="t-body text-muted-foreground border-l-4 border-foreground pl-5 [overflow-wrap:anywhere]">
               Cold doors fade. Warm leads glow. Closes burn bright. Walk into
               tomorrow knowing exactly where the money lives — and which streets
               are still cold.
@@ -305,8 +305,8 @@ function HeatmapSection() {
             { n: "$84,210", l: "Revenue booked" },
           ].map((s) => (
             <div key={s.l} className="bg-background p-4 sm:p-6">
-              <div className="font-mono font-bold text-3xl sm:text-5xl lg:text-6xl tabular-nums whitespace-nowrap">{s.n}</div>
-              <div className="label-mono text-[10px] sm:text-xs text-muted-foreground mt-3">{s.l}</div>
+              <div className="t-stat whitespace-nowrap">{s.n}</div>
+              <div className="t-label text-muted-foreground mt-3">{s.l}</div>
             </div>
           ))}
         </div>
@@ -362,16 +362,16 @@ function FinalCTA() {
   return (
     <section className="bg-primary text-primary-foreground border-b-4 border-foreground">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32 text-center">
-        <div className="label-mono text-xs mb-6 sm:mb-8">Ready?</div>
-        <h2 className="font-display text-5xl sm:text-6xl lg:text-[9rem] leading-[1.05] sm:leading-[0.95] lg:leading-[0.85] tracking-tight">
+        <div className="t-label mb-6 sm:mb-8">Ready?</div>
+        <h2 className="t-hero">
           Start knocking.
         </h2>
-        <p className="mt-6 sm:mt-8 text-sm sm:text-base max-w-md mx-auto opacity-90 leading-[1.7] [overflow-wrap:anywhere]">
+        <p className="mt-6 sm:mt-8 t-body max-w-md mx-auto opacity-90 [overflow-wrap:anywhere]">
           14-day free trial. No credit card. Knock today, close tomorrow.
         </p>
         <a
           href={APP_URL}
-          className="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-foreground text-background border-2 border-foreground px-6 py-4 sm:px-8 sm:py-5 label-mono text-xs hover:bg-background hover:text-foreground transition-colors"
+          className="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-foreground text-background border-2 border-foreground px-6 py-4 sm:px-8 sm:py-5 t-label hover:bg-background hover:text-foreground transition-colors"
         >
           Open the app <Arrow />
         </a>
@@ -387,14 +387,14 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7" />
-          <span className="font-display text-3xl text-brand leading-none">Giraffe!</span>
-          <span className="label-mono text-xs text-muted-foreground ml-3">
+          <span className="font-display text-2xl sm:text-3xl text-brand leading-none">Giraffe!</span>
+          <span className="t-label text-muted-foreground ml-3">
             © {new Date().getFullYear()}
           </span>
         </div>
         <a
           href={APP_URL}
-          className="label-mono text-xs hover:text-primary transition-colors"
+          className="t-label hover:text-primary transition-colors"
         >
           app.holygiraffe.com <Arrow />
         </a>
