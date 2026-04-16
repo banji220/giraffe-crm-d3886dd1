@@ -175,25 +175,25 @@ function MonthCalendar({
   const trailingBlanks = (7 - (totalCells % 7)) % 7;
   return (
     <div>
-      <div className="flex items-baseline justify-between mb-2">
-        <div className="font-display text-lg leading-none">{month.name}</div>
+      <div className="flex items-baseline justify-between mb-3">
+        <div className="font-display text-xl leading-none">{month.name}</div>
         <div className="t-label text-muted-foreground">{month.year}</div>
       </div>
-      <div className="grid grid-cols-7 gap-1 mb-1.5">
+      <div className="grid grid-cols-7 gap-2 mb-2">
         {WEEKDAY_LABELS.map((d, i) => (
           <div key={i} className="t-label text-muted-foreground text-center">
             {d}
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-1">
+      <div className="grid grid-cols-7 gap-2">
         {Array.from({ length: month.leadingBlanks }).map((_, i) => (
           <div key={`lb-${i}`} className={cellSizeClass} />
         ))}
         {Array.from({ length: month.daysInMonth }).map((_, i) => (
           <div
             key={`d-${i}`}
-            className={`${cellSizeClass} border border-foreground/15 rounded-[3px]`}
+            className={`${cellSizeClass} border-2 border-foreground/20 rounded-md`}
             style={{ backgroundColor: `var(--heat-${values[i] ?? 0})` }}
           />
         ))}
