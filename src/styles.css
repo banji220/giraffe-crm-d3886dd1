@@ -238,7 +238,7 @@
   .t-stat {
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: clamp(1.875rem, 7vw, 3.75rem); /* 30px → 60px */
+    font-size: clamp(1.5rem, 6vw, 3.75rem); /* 24px → 60px */
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
