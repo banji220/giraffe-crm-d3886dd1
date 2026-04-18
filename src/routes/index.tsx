@@ -531,8 +531,13 @@ function MobileHeatmap() {
       </div>
 
       <div
-        className="overflow-x-auto -mx-5 px-5 pb-1"
-        style={{ scrollbarWidth: "thin" }}
+        className="overflow-x-auto -mx-5 px-5 pb-2"
+        style={{
+          scrollbarWidth: "thin",
+          WebkitOverflowScrolling: "touch",
+          scrollSnapType: "x proximity",
+          overscrollBehaviorX: "contain",
+        }}
       >
         <div
           className="grid"
