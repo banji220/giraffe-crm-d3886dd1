@@ -225,9 +225,9 @@ function generateMonthValues(daysInMonth: number, seed: number, ramp: number) {
 }
 
 function MobileContributionGrid() {
-  // Single continuous grid — 14 cols × 6 rows = 84 days
-  const cols = 14;
-  const rows = 6;
+  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
+  const cols = 12;
+  const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
   let seed = 19;
@@ -261,8 +261,8 @@ function MobileContributionGrid() {
         className="grid gap-1.5"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
           gridTemplateRows: `repeat(${rows}, 1fr)`,
+          gridAutoFlow: "column",
         }}
       >
         {cells.map((v, i) => (
@@ -482,9 +482,9 @@ function HeatmapSection() {
 }
 
 function MobileHeatmap() {
-  // Single continuous grid — 12 cols × 8 rows = 96 days, large readable cells
+  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
   const cols = 12;
-  const rows = 8;
+  const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
   let seed = 47;
@@ -506,7 +506,7 @@ function MobileHeatmap() {
   return (
     <div className="border-2 border-foreground bg-card p-5">
       <div className="flex items-center justify-between mb-5">
-        <div className="t-label">Last ~3 months</div>
+        <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
@@ -514,8 +514,8 @@ function MobileHeatmap() {
         className="grid gap-2"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridAutoFlow: "row",
           gridTemplateRows: `repeat(${rows}, 1fr)`,
+          gridAutoFlow: "column",
         }}
       >
         {cells.map((v, i) => (
