@@ -132,100 +132,14 @@ function Hero() {
   );
 }
 
-/* ---------- Mobile Contribution Grid (12 weeks) ---------- */
-/* ---------- Mobile month-grid building blocks ---------- */
-const WEEKDAY_LABELS = ["M", "T", "W", "T", "F", "S", "S"];
-const MONTH_NAMES = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
-
-// Returns the last `count` months in chronological order (oldest → newest),
-// each with: name, year, daysInMonth, leadingBlanks (Mon-start week offset).
-function getRecentMonths(count: number, refDate = new Date()) {
-  const months: { name: string; year: number; daysInMonth: number; leadingBlanks: number; monthIndex: number }[] = [];
-  for (let i = count - 1; i >= 0; i--) {
-    const d = new Date(refDate.getFullYear(), refDate.getMonth() - i, 1);
-    const monthIndex = d.getMonth();
-    const year = d.getFullYear();
-    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
-    // Convert Sun=0..Sat=6 → Mon=0..Sun=6
-    const jsDay = new Date(year, monthIndex, 1).getDay();
-    const leadingBlanks = (jsDay + 6) % 7;
-    months.push({ name: MONTH_NAMES[monthIndex], year, daysInMonth, leadingBlanks, monthIndex });
-  }
-  return months;
-}
-
-function MonthCalendar({
-  month,
-  values,
-  cellSizeClass = "aspect-square",
-}: {
-  month: { name: string; year: number; daysInMonth: number; leadingBlanks: number };
-  values: number[];
-  cellSizeClass?: string;
-}) {
-  const totalCells = month.leadingBlanks + month.daysInMonth;
-  const trailingBlanks = (7 - (totalCells % 7)) % 7;
-  return (
-    <div>
-      <div className="flex items-baseline justify-between mb-3">
-        <div className="font-display text-xl leading-none">{month.name}</div>
-        <div className="t-label text-muted-foreground">{month.year}</div>
-      </div>
-      <div className="grid grid-cols-7 gap-2 mb-2">
-        {WEEKDAY_LABELS.map((d, i) => (
-          <div key={i} className="t-label text-muted-foreground text-center">
-            {d}
-          </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-7 gap-2">
-        {Array.from({ length: month.leadingBlanks }).map((_, i) => (
-          <div key={`lb-${i}`} className={cellSizeClass} />
-        ))}
-        {Array.from({ length: month.daysInMonth }).map((_, i) => (
-          <div
-            key={`d-${i}`}
-            className={`${cellSizeClass} border-2 border-foreground/20 rounded-md`}
-            style={{ backgroundColor: `var(--heat-${values[i] ?? 0})` }}
-          />
-        ))}
-        {Array.from({ length: trailingBlanks }).map((_, i) => (
-          <div key={`tb-${i}`} className={cellSizeClass} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Deterministic activity values per month (0..5) using a seeded LCG.
-function generateMonthValues(daysInMonth: number, seed: number, ramp: number) {
-  let s = seed;
-  const out: number[] = [];
-  for (let i = 0; i < daysInMonth; i++) {
-    s = (s * 9301 + 49297) % 233280;
-    const r = s / 233280;
-    const x = r + ramp;
-    const v =
-      x < 0.4 ? 0 :
-      x < 0.62 ? 1 :
-      x < 0.8 ? 2 :
-      x < 0.91 ? 3 :
-      x < 0.97 ? 4 : 5;
-    out.push(v);
-  }
-  return out;
-}
-
-function MobileContributionGrid() {
+/* ---------- Hero Contribution Grid (12 weeks, responsive) ---------- */
+function ContributionGrid() {
   // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
   const cols = 12;
   const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
-  let seed = 19;
+  let seed = 11;
   for (let i = 0; i < total; i++) {
     seed = (seed * 9301 + 49297) % 233280;
     const r = seed / 233280;
@@ -246,8 +160,8 @@ function MobileContributionGrid() {
   const closes = totals[4] + totals[5];
 
   return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="border-2 border-foreground bg-card p-4 sm:p-5">
+      <div className="flex items-center justify-between mb-4 sm:mb-5">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
@@ -269,8 +183,8 @@ function MobileContributionGrid() {
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-1">
+      <div className="mt-4 sm:mt-5 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+        <div className="grid grid-cols-2 gap-x-5 sm:gap-x-6 gap-y-1">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
