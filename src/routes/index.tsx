@@ -283,7 +283,7 @@ function MobileContributionGrid() {
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
-              className="w-3 h-3 border border-foreground/15"
+              className="w-3 h-3 border border-foreground/20"
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
@@ -492,13 +492,13 @@ function MobileHeatmap() {
     seed = (seed * 9301 + 49297) % 233280;
     const r = seed / 233280;
     const ramp = i / total;
-    const boost = ramp * 0.45;
+    const boost = ramp * 0.4;
     const x = r + boost;
     const v =
-      x < 0.38 ? 0 :
-      x < 0.6 ? 1 :
-      x < 0.78 ? 2 :
-      x < 0.9 ? 3 :
+      x < 0.4 ? 0 :
+      x < 0.62 ? 1 :
+      x < 0.8 ? 2 :
+      x < 0.91 ? 3 :
       x < 0.97 ? 4 : 5;
     cells.push(v);
   }
@@ -527,14 +527,14 @@ function MobileHeatmap() {
         ))}
       </div>
 
-      <div className="mt-5 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
         <div className="t-label text-muted-foreground">Activity</div>
         <div className="flex items-center gap-1.5">
           <span className="t-label text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
-              className="w-3.5 h-3.5 border border-foreground/15"
+              className="w-3 h-3 border border-foreground/20"
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
