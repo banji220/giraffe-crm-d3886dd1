@@ -367,7 +367,12 @@ function HeatmapSection() {
           </div>
         </div>
 
-        <BigContributionGrid />
+        <div className="hidden sm:block">
+          <BigContributionGrid />
+        </div>
+        <div className="sm:hidden">
+          <MobileHeatmap />
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
           {[
@@ -388,12 +393,55 @@ function HeatmapSection() {
 }
 
 function BigContributionGrid() {
-  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days, identical to hero
+  // Desktop full year — 53 weeks × 7 days
+  const weeks = 53;
+  const days = 7;
+  const total = weeks * days;
+  const cells: number[] = [];
+  let seed = 31;
+  for (let i = 0; i < total; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    const r = seed / 233280;
+    const ramp = i / total;
+    const boost = ramp * 0.4;
+    const x = r + boost;
+    const v =
+      x < 0.4 ? 0 :
+      x < 0.6 ? 1 :
+      x < 0.8 ? 2 :
+      x < 0.9 ? 3 :
+      x < 0.97 ? 4 : 5;
+    cells.push(v);
+  }
+  return (
+    <div className="border-2 border-foreground bg-card p-6 lg:p-8">
+      <div
+        className="grid gap-1"
+        style={{
+          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${days}, 1fr)`,
+          gridAutoFlow: "column",
+        }}
+      >
+        {cells.map((v, i) => (
+          <div
+            key={i}
+            className="aspect-square border border-foreground/15"
+            style={{ backgroundColor: `var(--heat-${v})` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MobileHeatmap() {
+  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
   const cols = 12;
   const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
-  let seed = 31;
+  let seed = 47;
   for (let i = 0; i < total; i++) {
     seed = (seed * 9301 + 49297) % 233280;
     const r = seed / 233280;
@@ -410,8 +458,8 @@ function BigContributionGrid() {
   }
 
   return (
-    <div className="border-2 border-foreground bg-card p-4 sm:p-5">
-      <div className="flex items-center justify-between mb-4 sm:mb-5">
+    <div className="border-2 border-foreground bg-card p-4">
+      <div className="flex items-center justify-between mb-4">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
@@ -433,7 +481,7 @@ function BigContributionGrid() {
         ))}
       </div>
 
-      <div className="mt-4 sm:mt-5 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
         <div className="t-label text-muted-foreground">Activity</div>
         <div className="flex items-center gap-1.5">
           <span className="t-label text-muted-foreground mr-1">Less</span>
