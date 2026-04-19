@@ -124,12 +124,7 @@ function Hero() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="hidden sm:block">
-              <ContributionGrid />
-            </div>
-            <div className="sm:hidden">
-              <MobileContributionGrid />
-            </div>
+            <ContributionGrid />
           </div>
         </div>
       </div>
@@ -456,12 +451,7 @@ function HeatmapSection() {
           </div>
         </div>
 
-        <div className="hidden sm:block">
-          <BigContributionGrid />
-        </div>
-        <div className="sm:hidden">
-          <MobileHeatmap />
-        </div>
+        <BigContributionGrid />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
           {[
