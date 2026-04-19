@@ -128,7 +128,7 @@ function Hero() {
               <ContributionGrid />
             </div>
             <div className="sm:hidden">
-              <MobileContributionGrid />
+              <MobileMonthGrid withStats />
             </div>
           </div>
         </div>
@@ -137,9 +137,8 @@ function Hero() {
   );
 }
 
-/* ---------- Hero Contribution Grid: full year (desktop) ---------- */
+/* ---------- Desktop Hero Contribution Grid (365 days) ---------- */
 function ContributionGrid() {
-  // GitHub-style — 53 weeks × 7 days = 371 cells (full year)
   const weeks = 53;
   const days = 7;
   const total = weeks * days;
@@ -209,17 +208,32 @@ function ContributionGrid() {
   );
 }
 
-/* ---------- Hero Contribution Grid: 12 weeks (mobile) ---------- */
-function MobileContributionGrid() {
-  const cols = 12;
-  const rows = 7;
-  const total = cols * rows;
-  const cells: number[] = [];
-  let seed = 19;
-  for (let i = 0; i < total; i++) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const r = seed / 233280;
-    const ramp = i / total;
+/* ---------- Mobile 1-Month Calendar Heatmap ---------- */
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+const WEEKDAY_LABELS = ["M", "T", "W", "T", "F", "S", "S"];
+
+function MobileMonthGrid({ withStats = false, seed = 23 }: { withStats?: boolean; seed?: number }) {
+  // Use the current month, calendar-aligned (Mon-start)
+  const today = new Date();
+  const year = today.getFullYear();
+  const monthIndex = today.getMonth();
+  const monthName = MONTH_NAMES[monthIndex];
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  const jsDay = new Date(year, monthIndex, 1).getDay(); // Sun=0..Sat=6
+  const leadingBlanks = (jsDay + 6) % 7; // Mon=0..Sun=6
+  const totalCells = leadingBlanks + daysInMonth;
+  const trailingBlanks = (7 - (totalCells % 7)) % 7;
+
+  // Deterministic activity 0..5 per day
+  const values: number[] = [];
+  let s = seed;
+  for (let i = 0; i < daysInMonth; i++) {
+    s = (s * 9301 + 49297) % 233280;
+    const r = s / 233280;
+    const ramp = i / daysInMonth;
     const boost = ramp * 0.4;
     const x = r + boost;
     const v =
@@ -228,52 +242,81 @@ function MobileContributionGrid() {
       x < 0.8 ? 2 :
       x < 0.91 ? 3 :
       x < 0.97 ? 4 : 5;
-    cells.push(v);
+    values.push(v);
   }
+
   const totals = [0, 0, 0, 0, 0, 0];
-  cells.forEach((v) => totals[v]++);
-  const knocks = cells.length;
+  values.forEach((v) => totals[v]++);
+  const knocks = values.length;
   const closes = totals[4] + totals[5];
 
   return (
     <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="t-label">Last 12 weeks</div>
-        <div className="t-label text-muted-foreground">Sample</div>
+      <div className="flex items-baseline justify-between mb-4">
+        <div className="font-display text-2xl leading-none">{monthName}</div>
+        <div className="t-label text-muted-foreground">{year} · Sample</div>
       </div>
 
-      <div
-        className="grid gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-          gridAutoFlow: "column",
-        }}
-      >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+      <div className="grid grid-cols-7 gap-1.5 mb-2">
+        {WEEKDAY_LABELS.map((d, i) => (
+          <div key={i} className="t-label text-muted-foreground text-center">
+            {d}
+          </div>
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-1">
-          <Stat n={knocks.toLocaleString()} label="Knocks" />
-          <Stat n={closes.toLocaleString()} label="Closed" />
-        </div>
-        <div className="flex items-center gap-1">
-          {[0, 1, 2, 3, 4, 5].map((lvl) => (
-            <span
-              key={lvl}
-              className="w-3 h-3 border border-foreground/20"
-              style={{ backgroundColor: `var(--heat-${lvl})` }}
-            />
-          ))}
-        </div>
+      <div className="grid grid-cols-7 gap-1.5">
+        {Array.from({ length: leadingBlanks }).map((_, i) => (
+          <div key={`lb-${i}`} className="aspect-square" />
+        ))}
+        {Array.from({ length: daysInMonth }).map((_, i) => (
+          <div
+            key={`d-${i}`}
+            className="aspect-square border-2 border-foreground/20 rounded-md flex items-end justify-end p-1"
+            style={{ backgroundColor: `var(--heat-${values[i]})` }}
+          >
+            <span className="text-[10px] font-mono leading-none text-foreground/60">
+              {i + 1}
+            </span>
+          </div>
+        ))}
+        {Array.from({ length: trailingBlanks }).map((_, i) => (
+          <div key={`tb-${i}`} className="aspect-square" />
+        ))}
       </div>
+
+      {withStats ? (
+        <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-1">
+            <Stat n={knocks.toLocaleString()} label="Knocks" />
+            <Stat n={closes.toLocaleString()} label="Closed" />
+          </div>
+          <div className="flex items-center gap-1">
+            {[0, 1, 2, 3, 4, 5].map((lvl) => (
+              <span
+                key={lvl}
+                className="w-3 h-3 border border-foreground/20"
+                style={{ backgroundColor: `var(--heat-${lvl})` }}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+          <div className="t-label text-muted-foreground">Activity</div>
+          <div className="flex items-center gap-1.5">
+            <span className="t-label text-muted-foreground mr-1">Less</span>
+            {[0, 1, 2, 3, 4, 5].map((lvl) => (
+              <span
+                key={lvl}
+                className="w-3 h-3 border border-foreground/20"
+                style={{ backgroundColor: `var(--heat-${lvl})` }}
+              />
+            ))}
+            <span className="t-label text-muted-foreground ml-1">More</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -371,7 +414,7 @@ function HeatmapSection() {
           <BigContributionGrid />
         </div>
         <div className="sm:hidden">
-          <MobileHeatmap />
+          <MobileMonthGrid seed={47} />
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
@@ -430,70 +473,6 @@ function BigContributionGrid() {
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
-      </div>
-    </div>
-  );
-}
-
-function MobileHeatmap() {
-  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
-  const cols = 12;
-  const rows = 7;
-  const total = cols * rows;
-  const cells: number[] = [];
-  let seed = 47;
-  for (let i = 0; i < total; i++) {
-    seed = (seed * 9301 + 49297) % 233280;
-    const r = seed / 233280;
-    const ramp = i / total;
-    const boost = ramp * 0.4;
-    const x = r + boost;
-    const v =
-      x < 0.4 ? 0 :
-      x < 0.62 ? 1 :
-      x < 0.8 ? 2 :
-      x < 0.91 ? 3 :
-      x < 0.97 ? 4 : 5;
-    cells.push(v);
-  }
-
-  return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div className="t-label">Last 12 weeks</div>
-        <div className="t-label text-muted-foreground">Sample</div>
-      </div>
-
-      <div
-        className="grid gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-          gridAutoFlow: "column",
-        }}
-      >
-        {cells.map((v, i) => (
-          <div
-            key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
-        ))}
-      </div>
-
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
-        <div className="t-label text-muted-foreground">Activity</div>
-        <div className="flex items-center gap-1.5">
-          <span className="t-label text-muted-foreground mr-1">Less</span>
-          {[0, 1, 2, 3, 4, 5].map((lvl) => (
-            <span
-              key={lvl}
-              className="w-3 h-3 border border-foreground/20"
-              style={{ backgroundColor: `var(--heat-${lvl})` }}
-            />
-          ))}
-          <span className="t-label text-muted-foreground ml-1">More</span>
-        </div>
       </div>
     </div>
   );
