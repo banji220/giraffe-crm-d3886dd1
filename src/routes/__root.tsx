@@ -34,6 +34,12 @@ export const Route = createRootRoute({
       { name: "author", content: "Giraffe CRM" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Giraffe CRM — Knock, Quote, Close." },
+      { name: "twitter:title", content: "Giraffe CRM — Knock, Quote, Close." },
+      { property: "og:description", content: "Field sales CRM for door-to-door window cleaning crews. Every door counts." },
+      { name: "twitter:description", content: "Field sales CRM for door-to-door window cleaning crews. Every door counts." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bebfa963-8ac2-42af-9bc5-9648e18aee35/id-preview-85cf1029--8601845b-78a0-4ba1-a69f-b4043cdfe9ec.lovable.app-1776495758235.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bebfa963-8ac2-42af-9bc5-9648e18aee35/id-preview-85cf1029--8601845b-78a0-4ba1-a69f-b4043cdfe9ec.lovable.app-1776495758235.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
