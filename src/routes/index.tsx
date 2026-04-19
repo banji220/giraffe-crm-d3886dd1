@@ -410,7 +410,12 @@ function HeatmapSection() {
           </div>
         </div>
 
-        <BigContributionGrid />
+        <div className="hidden sm:block">
+          <BigContributionGrid />
+        </div>
+        <div className="sm:hidden">
+          <MobileMonthGrid seed={47} />
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
           {[
@@ -431,10 +436,10 @@ function HeatmapSection() {
 }
 
 function BigContributionGrid() {
-  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days, identical to hero
-  const cols = 12;
-  const rows = 7;
-  const total = cols * rows;
+  // Desktop full year — 53 weeks × 7 days
+  const weeks = 53;
+  const days = 7;
+  const total = weeks * days;
   const cells: number[] = [];
   let seed = 31;
   for (let i = 0; i < total; i++) {
@@ -445,50 +450,29 @@ function BigContributionGrid() {
     const x = r + boost;
     const v =
       x < 0.4 ? 0 :
-      x < 0.62 ? 1 :
+      x < 0.6 ? 1 :
       x < 0.8 ? 2 :
-      x < 0.91 ? 3 :
+      x < 0.9 ? 3 :
       x < 0.97 ? 4 : 5;
     cells.push(v);
   }
-
   return (
-    <div className="border-2 border-foreground bg-card p-4 sm:p-5">
-      <div className="flex items-center justify-between mb-4 sm:mb-5">
-        <div className="t-label">Last 12 weeks</div>
-        <div className="t-label text-muted-foreground">Sample</div>
-      </div>
-
+    <div className="border-2 border-foreground bg-card p-6 lg:p-8">
       <div
-        className="grid gap-2"
+        className="grid gap-1"
         style={{
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
+          gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${days}, 1fr)`,
           gridAutoFlow: "column",
         }}
       >
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-square border border-foreground/15"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
-      </div>
-
-      <div className="mt-4 sm:mt-5 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
-        <div className="t-label text-muted-foreground">Activity</div>
-        <div className="flex items-center gap-1.5">
-          <span className="t-label text-muted-foreground mr-1">Less</span>
-          {[0, 1, 2, 3, 4, 5].map((lvl) => (
-            <span
-              key={lvl}
-              className="w-3 h-3 border border-foreground/20"
-              style={{ backgroundColor: `var(--heat-${lvl})` }}
-            />
-          ))}
-          <span className="t-label text-muted-foreground ml-1">More</span>
-        </div>
       </div>
     </div>
   );
