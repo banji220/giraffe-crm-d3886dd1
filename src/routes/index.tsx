@@ -258,7 +258,7 @@ function MobileContributionGrid() {
       </div>
 
       <div
-        className="grid gap-1.5"
+        className="grid gap-2"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -268,7 +268,7 @@ function MobileContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/15 rounded-[3px]"
+            className="aspect-square border border-foreground/20 rounded-[3px]"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
@@ -504,8 +504,8 @@ function MobileHeatmap() {
   }
 
   return (
-    <div className="border-2 border-foreground bg-card p-5">
-      <div className="flex items-center justify-between mb-5">
+    <div className="border-2 border-foreground bg-card p-4">
+      <div className="flex items-center justify-between mb-4">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
