@@ -209,9 +209,9 @@ function ContributionGrid() {
   );
 }
 
-/* ---------- Hero Contribution Grid: 12 weeks (mobile) ---------- */
+/* ---------- Hero Contribution Grid: 6 weeks (mobile) ---------- */
 function MobileContributionGrid() {
-  const cols = 12;
+  const cols = 6;
   const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
@@ -238,7 +238,7 @@ function MobileContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-4">
       <div className="flex items-center justify-between mb-4">
-        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label">Last 6 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
@@ -436,8 +436,8 @@ function BigContributionGrid() {
 }
 
 function MobileHeatmap() {
-  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
-  const cols = 12;
+  // GitHub-style — 6 columns (weeks) × 7 rows (days) = 42 days
+  const cols = 6;
   const rows = 7;
   const total = cols * rows;
   const cells: number[] = [];
@@ -460,7 +460,7 @@ function MobileHeatmap() {
   return (
     <div className="border-2 border-foreground bg-card p-4">
       <div className="flex items-center justify-between mb-4">
-        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label">Last 6 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
