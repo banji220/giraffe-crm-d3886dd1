@@ -253,7 +253,7 @@ function MobileContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-[2/3] border border-foreground/20 rounded-[3px]"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
@@ -475,7 +475,7 @@ function MobileHeatmap() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-[2/3] border border-foreground/20 rounded-[3px]"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
