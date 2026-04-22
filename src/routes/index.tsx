@@ -91,7 +91,7 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
@@ -123,7 +123,7 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 -mx-2 sm:mx-0">
             <div className="hidden sm:block">
               <ContributionGrid />
             </div>
@@ -236,14 +236,14 @@ function MobileContributionGrid() {
   const closes = totals[4] + totals[5];
 
   return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="border-2 border-foreground bg-card p-3">
+      <div className="flex items-center justify-between mb-3">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-2"
+        className="grid gap-1.5"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -259,8 +259,8 @@ function MobileContributionGrid() {
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-end justify-between gap-4">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-1">
+      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-end justify-between gap-3">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
@@ -348,7 +348,7 @@ function HowItWorks() {
 function HeatmapSection() {
   return (
     <section className="bg-secondary border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="t-label text-primary mb-6 sm:mb-8">The Heatmap</div>
@@ -373,6 +373,8 @@ function HeatmapSection() {
         <div className="sm:hidden">
           <MobileHeatmap />
         </div>
+
+        {/* Re-pad surrounding stats so only the heatmap card is full-bleed on mobile */}
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
           {[
@@ -458,14 +460,14 @@ function MobileHeatmap() {
   }
 
   return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="border-2 border-foreground bg-card p-3">
+      <div className="flex items-center justify-between mb-3">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-2"
+        className="grid gap-1.5"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -481,9 +483,9 @@ function MobileHeatmap() {
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-center justify-between gap-3">
         <div className="t-label text-muted-foreground">Activity</div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           <span className="t-label text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
