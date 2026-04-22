@@ -123,7 +123,7 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 -mx-2 sm:mx-0">
+          <div className="lg:col-span-5">
             <div className="hidden sm:block">
               <ContributionGrid />
             </div>
