@@ -236,14 +236,14 @@ function MobileContributionGrid() {
   const closes = totals[4] + totals[5];
 
   return (
-    <div className="border-2 border-foreground bg-card p-3">
-      <div className="flex items-center justify-between mb-3">
+    <div className="border-2 border-foreground bg-card p-2.5 w-full">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-1.5"
+        className="grid gap-[3px] w-full"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -253,25 +253,27 @@ function MobileContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-square border border-foreground/20"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
       </div>
 
-      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-end justify-between gap-3">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+      <div className="mt-2.5 pt-2.5 border-t-2 border-foreground flex items-end justify-between gap-2">
+        <div className="flex items-end gap-4">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-[3px] pb-1">
+          <span className="t-label text-muted-foreground mr-1 text-[10px]">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
-              className="w-3 h-3 border border-foreground/20"
+              className="w-2.5 h-2.5 border border-foreground/20"
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
+          <span className="t-label text-muted-foreground ml-1 text-[10px]">More</span>
         </div>
       </div>
     </div>
