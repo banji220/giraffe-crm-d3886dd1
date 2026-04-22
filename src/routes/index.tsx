@@ -91,9 +91,9 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
+      <div className="mx-auto max-w-7xl px-[2vw] sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8 px-2 sm:px-0">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Door-to-door sales teams
@@ -123,7 +123,7 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 -mx-2 sm:mx-0">
+          <div className="lg:col-span-5">
             <div className="hidden sm:block">
               <ContributionGrid />
             </div>
@@ -236,14 +236,14 @@ function MobileContributionGrid() {
   const closes = totals[4] + totals[5];
 
   return (
-    <div className="border-2 border-foreground bg-card p-3">
-      <div className="flex items-center justify-between mb-3">
+    <div className="border-2 border-foreground bg-card p-2.5 w-full">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-1.5"
+        className="grid gap-[3px] w-full"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -253,25 +253,27 @@ function MobileContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-square border border-foreground/20"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
       </div>
 
-      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-end justify-between gap-3">
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+      <div className="mt-2.5 pt-2.5 border-t-2 border-foreground flex items-end justify-between gap-2">
+        <div className="flex items-end gap-4">
           <Stat n={knocks.toLocaleString()} label="Knocks" />
           <Stat n={closes.toLocaleString()} label="Closed" />
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-[3px] pb-1">
+          <span className="t-label text-muted-foreground mr-1 text-[10px]">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
-              className="w-3 h-3 border border-foreground/20"
+              className="w-2.5 h-2.5 border border-foreground/20"
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
+          <span className="t-label text-muted-foreground ml-1 text-[10px]">More</span>
         </div>
       </div>
     </div>
@@ -348,8 +350,8 @@ function HowItWorks() {
 function HeatmapSection() {
   return (
     <section className="bg-secondary border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+      <div className="mx-auto max-w-7xl px-[2vw] sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end px-2 sm:px-0">
           <div className="lg:col-span-7">
             <div className="t-label text-primary mb-6 sm:mb-8">The Heatmap</div>
             <h2 className="t-section">
@@ -376,7 +378,7 @@ function HeatmapSection() {
 
         {/* Re-pad surrounding stats so only the heatmap card is full-bleed on mobile */}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground mx-2 sm:mx-0">
           {[
             { n: "2,847", l: "Doors knocked" },
             { n: "612", l: "Quotes given" },
@@ -460,14 +462,14 @@ function MobileHeatmap() {
   }
 
   return (
-    <div className="border-2 border-foreground bg-card p-3">
-      <div className="flex items-center justify-between mb-3">
+    <div className="border-2 border-foreground bg-card p-2.5 w-full">
+      <div className="flex items-center justify-between mb-2.5">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-1.5"
+        className="grid gap-[3px] w-full"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -477,24 +479,24 @@ function MobileHeatmap() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20 rounded-[3px]"
+            className="aspect-square border border-foreground/20"
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
       </div>
 
-      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-2.5 pt-2.5 border-t-2 border-foreground flex items-center justify-between gap-2">
         <div className="t-label text-muted-foreground">Activity</div>
-        <div className="flex items-center gap-1">
-          <span className="t-label text-muted-foreground mr-1">Less</span>
+        <div className="flex items-center gap-[3px]">
+          <span className="t-label text-muted-foreground mr-1 text-[10px]">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
               key={lvl}
-              className="w-3 h-3 border border-foreground/20"
+              className="w-2.5 h-2.5 border border-foreground/20"
               style={{ backgroundColor: `var(--heat-${lvl})` }}
             />
           ))}
-          <span className="t-label text-muted-foreground ml-1">More</span>
+          <span className="t-label text-muted-foreground ml-1 text-[10px]">More</span>
         </div>
       </div>
     </div>
