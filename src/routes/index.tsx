@@ -350,7 +350,7 @@ function HowItWorks() {
 function HeatmapSection() {
   return (
     <section className="bg-secondary border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
+      <div className="mx-auto max-w-7xl px-[2vw] sm:px-6 py-16 sm:py-24 lg:py-32 space-y-10 sm:space-y-16">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-7">
             <div className="t-label text-primary mb-6 sm:mb-8">The Heatmap</div>
