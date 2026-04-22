@@ -378,7 +378,7 @@ function HeatmapSection() {
 
         {/* Re-pad surrounding stats so only the heatmap card is full-bleed on mobile */}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-foreground border-2 border-foreground mx-2 sm:mx-0">
           {[
             { n: "2,847", l: "Doors knocked" },
             { n: "612", l: "Quotes given" },
