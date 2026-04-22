@@ -460,14 +460,14 @@ function MobileHeatmap() {
   }
 
   return (
-    <div className="border-2 border-foreground bg-card p-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="border-2 border-foreground bg-card p-3">
+      <div className="flex items-center justify-between mb-3">
         <div className="t-label">Last 12 weeks</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-2"
+        className="grid gap-1.5"
         style={{
           gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, 1fr)`,
@@ -483,9 +483,9 @@ function MobileHeatmap() {
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t-2 border-foreground flex items-center justify-between gap-3">
+      <div className="mt-3 pt-3 border-t-2 border-foreground flex items-center justify-between gap-3">
         <div className="t-label text-muted-foreground">Activity</div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           <span className="t-label text-muted-foreground mr-1">Less</span>
           {[0, 1, 2, 3, 4, 5].map((lvl) => (
             <span
