@@ -292,12 +292,17 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
   const glowPeak = value >= 4 ? 0.34 : value >= 2 ? 0.22 : 0.14;
   const glowDuration = value >= 4 ? "8.8s" : "10.4s";
   const isElite = value === 5;
+  const flowDelay = (index % 53) * 105 + ((index * 97) % 260);
+  const tooltip = value === 0 ? "No activity" : `${value} activity ${value === 5 ? "peak" : "level"}`;
 
   return (
     <div
-      className={`relative overflow-hidden aspect-square border ${borderClass}`}
+      className={`heat-cell relative overflow-visible aspect-square border ${borderClass}`}
       style={{ backgroundColor: `var(--heat-${value})` }}
+      tabIndex={0}
+      aria-label={tooltip}
     >
+      <span className="absolute inset-0 overflow-hidden">
       {value > 0 ? (
         <span
           className="heat-cell-base"
@@ -306,6 +311,16 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
             "--heat-delay": `${randomDelay}ms`,
             "--heat-base-peak": basePeak,
             "--heat-duration": baseDuration,
+          } as React.CSSProperties}
+        />
+      ) : null}
+      {value > 0 ? (
+        <span
+          className="heat-cell-flow"
+          style={{
+            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            "--heat-flow-delay": `${flowDelay}ms`,
+            "--heat-flow-peak": value >= 4 ? 0.18 : 0.1,
           } as React.CSSProperties}
         />
       ) : null}
@@ -329,6 +344,11 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
           } as React.CSSProperties}
         />
       ) : null}
+      <span className="heat-cell-hover-glow" style={{ color: `var(--heat-${Math.max(value, 1)})` }} />
+      </span>
+      <span className="heat-cell-tooltip pointer-events-none absolute left-1/2 bottom-full mb-1.5 whitespace-nowrap border border-foreground bg-background px-2 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-foreground shadow-card">
+        {tooltip}
+      </span>
     </div>
   );
 }
