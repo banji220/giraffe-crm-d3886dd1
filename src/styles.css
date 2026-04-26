@@ -160,22 +160,25 @@
 @layer utilities {
   @keyframes heat-cell-glow {
     0%, 100% {
-      filter: brightness(1) saturate(1);
-      box-shadow: none;
+      opacity: 0;
     }
     45% {
-      filter: brightness(1.14) saturate(1.08);
-      box-shadow: 0 0 10px -5px currentColor;
+      opacity: var(--heat-glow-peak, 0.16);
     }
   }
 
-  .heat-cell-active {
-    animation: heat-cell-glow 4.8s ease-in-out infinite;
-    color: color-mix(in oklab, var(--primary) 70%, transparent);
+  .heat-cell-glow {
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    animation: heat-cell-glow 5.6s ease-in-out infinite;
+    animation-delay: var(--heat-delay, 0ms);
+    pointer-events: none;
+    will-change: opacity;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .heat-cell-active {
+    .heat-cell-glow {
       animation: none;
     }
   }

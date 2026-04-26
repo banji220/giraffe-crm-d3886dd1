@@ -184,11 +184,7 @@ function ContributionGrid() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/15 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/15" />
         ))}
       </div>
 
@@ -255,11 +251,7 @@ function MobileContributionGrid() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/20 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})`, animationDelay: `${(i % 13) * 120}ms` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/20" />
         ))}
       </div>
 
@@ -288,6 +280,29 @@ function Stat({ n, label }: { n: string; label: string }) {
     <div>
       <div className="t-stat">{n}</div>
       <div className="t-label text-muted-foreground mt-1">{label}</div>
+    </div>
+  );
+}
+
+function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
+  const shouldGlow = value > 0 && (value >= 4 || index % 5 === 0);
+  const glowPeak = value >= 4 ? 0.24 : value >= 2 ? 0.16 : 0.1;
+
+  return (
+    <div
+      className={`relative overflow-hidden aspect-square border ${borderClass}`}
+      style={{ backgroundColor: `var(--heat-${value})` }}
+    >
+      {shouldGlow ? (
+        <span
+          className="heat-cell-glow"
+          style={{
+            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            "--heat-delay": `${(index % 17) * 180}ms`,
+            "--heat-glow-peak": glowPeak,
+          } as React.CSSProperties}
+        />
+      ) : null}
     </div>
   );
 }
@@ -432,11 +447,7 @@ function BigContributionGrid() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/15 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/15" />
         ))}
       </div>
     </div>
@@ -481,11 +492,7 @@ function MobileHeatmap() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/20 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})`, animationDelay: `${(i % 13) * 120}ms` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/20" />
         ))}
       </div>
 
