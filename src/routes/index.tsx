@@ -91,9 +91,9 @@ function Wordmark() {
 function Hero() {
   return (
     <section className="border-b-4 border-foreground">
-      <div className="mx-auto max-w-7xl px-[2vw] sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-end">
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 px-2 sm:px-0">
+      <div className="mx-auto max-w-[92rem] px-[2vw] sm:px-6 pt-12 pb-12 sm:pt-20 sm:pb-16 lg:pt-28 lg:pb-24">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8 px-2 sm:px-0">
             <div className="inline-flex items-center gap-2 border-2 border-foreground px-3 py-1.5 t-label">
               <span className="w-2 h-2 bg-primary" />
               Field CRM · Door-to-door sales teams
@@ -123,7 +123,7 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-7">
             <div className="hidden sm:block">
               <ContributionGrid />
             </div>
@@ -165,14 +165,14 @@ function ContributionGrid() {
   const closes = totals[4] + totals[5];
 
   return (
-    <div className="border-2 border-foreground bg-card p-5">
+    <div className="border-2 border-foreground bg-card p-5 lg:p-7">
       <div className="flex items-center justify-between mb-4">
         <div className="t-label">Last 365 days</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
       <div
-        className="grid gap-[3px]"
+        className="grid gap-[3px] lg:gap-1 w-full"
         style={{
           gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${days}, 1fr)`,
