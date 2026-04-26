@@ -447,11 +447,7 @@ function BigContributionGrid() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/15 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/15" />
         ))}
       </div>
     </div>
@@ -496,11 +492,7 @@ function MobileHeatmap() {
         }}
       >
         {cells.map((v, i) => (
-          <div
-            key={i}
-            className={`aspect-square border border-foreground/20 ${v > 0 ? "heat-cell-active" : ""}`}
-            style={{ backgroundColor: `var(--heat-${v})`, animationDelay: `${(i % 13) * 120}ms` }}
-          />
+          <HeatCell key={i} value={v} index={i} borderClass="border-foreground/20" />
         ))}
       </div>
 
