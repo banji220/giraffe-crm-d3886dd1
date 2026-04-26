@@ -81,7 +81,7 @@ function Header() {
 function Wordmark() {
   return (
     <Link to="/" className="flex items-center gap-2 min-w-0">
-      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="w-7 h-7 sm:w-9 sm:h-9 shrink-0 object-contain" />
+      <img src="/logo.png" alt="Giraffe CRM" width={32} height={32} className="logo-contrast w-7 h-7 sm:w-9 sm:h-9 shrink-0 object-contain" />
       <span className="font-display text-xl sm:text-3xl text-brand truncate">Giraffe CRM</span>
     </Link>
   );
@@ -588,7 +588,7 @@ function Footer() {
     <footer className="bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2.5 min-w-0">
-          <img src="/logo.png" alt="" width={28} height={28} className="w-7 h-7 shrink-0 object-contain" />
+          <img src="/logo.png" alt="" width={28} height={28} className="logo-contrast w-7 h-7 shrink-0 object-contain" />
           <span className="font-display text-2xl sm:text-3xl text-brand leading-none">Giraffe CRM</span>
           <span className="t-label text-muted-foreground ml-3 shrink-0">
             © {new Date().getFullYear()}
