@@ -585,7 +585,7 @@ function Footer() {
           <img src="/logo.png" alt="" width={28} height={28} className="logo-contrast w-7 h-7 shrink-0 object-contain" />
           <span className="font-display text-2xl sm:text-3xl text-brand leading-none">Giraffe CRM</span>
           <span className="t-label text-muted-foreground ml-3 shrink-0">
-            © {new Date().getFullYear()}
+            © 2026
           </span>
         </div>
         <a
