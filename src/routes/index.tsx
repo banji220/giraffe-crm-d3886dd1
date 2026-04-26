@@ -285,8 +285,12 @@ function Stat({ n, label }: { n: string; label: string }) {
 }
 
 function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
+  const randomDelay = ((index * 379) % 5200) - 5200;
+  const basePeak = value >= 4 ? 0.16 : value >= 2 ? 0.1 : 0.06;
+  const baseDuration = value >= 4 ? "9.8s" : value >= 2 ? "10.8s" : "12.4s";
   const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
   const glowPeak = value >= 4 ? 0.34 : value >= 2 ? 0.22 : 0.14;
+  const glowDuration = value >= 4 ? "8.8s" : "10.4s";
   const isElite = value === 5;
 
   return (
@@ -294,13 +298,25 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
       className={`relative overflow-hidden aspect-square border ${borderClass}`}
       style={{ backgroundColor: `var(--heat-${value})` }}
     >
+      {value > 0 ? (
+        <span
+          className="heat-cell-base"
+          style={{
+            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            "--heat-delay": `${randomDelay}ms`,
+            "--heat-base-peak": basePeak,
+            "--heat-duration": baseDuration,
+          } as React.CSSProperties}
+        />
+      ) : null}
       {shouldGlow ? (
         <span
           className="heat-cell-glow"
           style={{
             color: `var(--heat-${Math.min(value + 1, 5)})`,
-            "--heat-delay": `${(index % 17) * 180}ms`,
+            "--heat-delay": `${randomDelay - 900}ms`,
             "--heat-glow-peak": glowPeak,
+            "--heat-glow-duration": glowDuration,
           } as React.CSSProperties}
         />
       ) : null}
@@ -309,7 +325,7 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
           className="heat-cell-elite"
           style={{
             color: "var(--heat-5)",
-            "--heat-delay": `${(index % 19) * 220}ms`,
+            "--heat-delay": `${randomDelay - 1600}ms`,
           } as React.CSSProperties}
         />
       ) : null}
