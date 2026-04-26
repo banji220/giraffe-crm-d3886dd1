@@ -288,12 +288,13 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
   const randomDelay = ((index * 379) % 5200) - 5200;
   const isElite = value === 5;
   const isActive = value > 0;
-  const basePeak = isElite ? 0.2 : value >= 4 ? 0.16 : value >= 2 ? 0.1 : 0.06;
-  const baseDuration = isElite ? "10.6s" : value >= 4 ? "9.8s" : value >= 2 ? "10.8s" : "12.4s";
-  const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
-  const glowPeak = isElite ? 0.42 : value >= 4 ? 0.34 : value >= 2 ? 0.22 : 0.14;
-  const glowDuration = isElite ? "9.6s" : value >= 4 ? "8.8s" : "10.4s";
-  const flowDelay = (index % 53) * 105 + ((index * 97) % 260);
+  const highlightColor = value >= 4 ? "var(--heat-spark)" : `var(--heat-${Math.min(value + 2, 5)})`;
+  const basePeak = isElite ? 0.5 : value >= 4 ? 0.38 : value >= 2 ? 0.26 : 0.16;
+  const baseDuration = isElite ? "8.8s" : value >= 4 ? "9.4s" : value >= 2 ? "10.2s" : "11.2s";
+  const shouldGlow = value >= 3 || (value >= 2 && index % 7 === 0);
+  const glowPeak = isElite ? 0.62 : value >= 4 ? 0.48 : value >= 2 ? 0.32 : 0.18;
+  const glowDuration = isElite ? "7.8s" : value >= 4 ? "8.4s" : "9.8s";
+  const flowDelay = -((index % 53) * 105 + ((index * 97) % 260));
   const tooltip = value === 0 ? "No activity" : `${value} activity ${value === 5 ? "peak" : "level"}`;
 
   return (
@@ -307,7 +308,7 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
         <span
           className={`heat-cell-base ${isActive ? "" : "heat-cell-static"}`}
           style={{
-            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            color: highlightColor,
             "--heat-delay": `${randomDelay}ms`,
             "--heat-base-peak": basePeak,
             "--heat-duration": baseDuration,
@@ -316,15 +317,15 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
         <span
           className={`heat-cell-flow ${isActive ? "" : "heat-cell-static"}`}
           style={{
-            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            color: highlightColor,
             "--heat-flow-delay": `${flowDelay}ms`,
-            "--heat-flow-peak": value >= 4 ? 0.18 : 0.1,
+            "--heat-flow-peak": value >= 4 ? 0.32 : 0.18,
           } as React.CSSProperties}
         />
         <span
           className={`heat-cell-glow ${shouldGlow ? "" : "heat-cell-static"}`}
           style={{
-            color: `var(--heat-${Math.min(value + 1, 5)})`,
+            color: highlightColor,
             "--heat-delay": `${randomDelay - 900}ms`,
             "--heat-glow-peak": glowPeak,
             "--heat-glow-duration": glowDuration,
