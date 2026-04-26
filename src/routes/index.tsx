@@ -213,11 +213,11 @@ function ContributionGrid() {
   );
 }
 
-/* ---------- Hero Contribution Grid: 12 weeks (mobile) ---------- */
+/* ---------- Hero Contribution Grid: 90 days (mobile) ---------- */
 function MobileContributionGrid() {
-  const cols = 12;
+  const cols = 13;
   const rows = 7;
-  const total = cols * rows;
+  const total = 90;
   const cells: number[] = [];
   let seed = 19;
   for (let i = 0; i < total; i++) {
@@ -242,7 +242,7 @@ function MobileContributionGrid() {
   return (
     <div className="border-2 border-foreground bg-card p-2.5 w-full">
       <div className="flex items-center justify-between mb-2.5">
-        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label">Last 90 days</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
@@ -444,10 +444,10 @@ function BigContributionGrid() {
 }
 
 function MobileHeatmap() {
-  // GitHub-style — 12 columns (weeks) × 7 rows (days) = 84 days
-  const cols = 12;
+  // GitHub-style — 13 columns × 7 rows, showing the last 90 days
+  const cols = 13;
   const rows = 7;
-  const total = cols * rows;
+  const total = 90;
   const cells: number[] = [];
   let seed = 47;
   for (let i = 0; i < total; i++) {
@@ -468,7 +468,7 @@ function MobileHeatmap() {
   return (
     <div className="border-2 border-foreground bg-card p-2.5 w-full">
       <div className="flex items-center justify-between mb-2.5">
-        <div className="t-label">Last 12 weeks</div>
+        <div className="t-label">Last 90 days</div>
         <div className="t-label text-muted-foreground">Sample</div>
       </div>
 
