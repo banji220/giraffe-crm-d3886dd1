@@ -304,6 +304,12 @@
   .bg-brand {
     background-color: var(--brand);
   }
+  .logo-contrast {
+    filter: invert(1);
+  }
+  .dark .logo-contrast {
+    filter: none;
+  }
   .font-display {
     font-family: var(--font-display);
     font-weight: 700;
