@@ -249,8 +249,8 @@ function MobileContributionGrid() {
       <div
         className="inline-grid gap-[2px]"
         style={{
-          gridTemplateColumns: `repeat(${cols}, clamp(9px, 2.35vw, 12px))`,
-          gridTemplateRows: `repeat(${rows}, clamp(9px, 2.35vw, 12px))`,
+          gridTemplateColumns: `repeat(${cols}, clamp(11px, 3vw, 14px))`,
+          gridTemplateRows: `repeat(${rows}, clamp(11px, 3vw, 14px))`,
           gridAutoFlow: "column",
         }}
       >
@@ -475,8 +475,8 @@ function MobileHeatmap() {
       <div
         className="inline-grid gap-[2px]"
         style={{
-          gridTemplateColumns: `repeat(${cols}, clamp(9px, 2.35vw, 12px))`,
-          gridTemplateRows: `repeat(${rows}, clamp(9px, 2.35vw, 12px))`,
+          gridTemplateColumns: `repeat(${cols}, clamp(11px, 3vw, 14px))`,
+          gridTemplateRows: `repeat(${rows}, clamp(11px, 3vw, 14px))`,
           gridAutoFlow: "column",
         }}
       >
