@@ -289,6 +289,13 @@
     will-change: opacity, transform;
   }
 
+  .heat-cell-static {
+    animation: none;
+    opacity: 0;
+    transform: none;
+    will-change: auto;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .heat-cell-base,
     .heat-cell-glow,
