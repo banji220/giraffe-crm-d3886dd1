@@ -162,8 +162,11 @@
     0%, 100% {
       opacity: 0;
     }
-    45% {
+    48% {
       opacity: var(--heat-glow-peak, 0.16);
+    }
+    62% {
+      opacity: calc(var(--heat-glow-peak, 0.16) * 0.62);
     }
   }
 
@@ -173,8 +176,8 @@
       transform: scale(1);
     }
     50% {
-      opacity: 0.18;
-      transform: scale(0.92);
+      opacity: 0.28;
+      transform: scale(0.88);
     }
   }
 
@@ -182,7 +185,7 @@
     position: absolute;
     inset: 0;
     background: currentColor;
-    animation: heat-cell-glow 5.6s ease-in-out infinite;
+    animation: heat-cell-glow 7.2s ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
     will-change: opacity;
@@ -192,7 +195,7 @@
     position: absolute;
     inset: -1px;
     border: 1px solid currentColor;
-    animation: heat-cell-elite 6.8s ease-in-out infinite;
+    animation: heat-cell-elite 8.4s ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
     will-change: opacity, transform;
