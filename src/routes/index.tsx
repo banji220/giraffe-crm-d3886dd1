@@ -288,19 +288,29 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
   const randomDelay = ((index * 379) % 5200) - 5200;
   const isElite = value === 5;
   const isActive = value > 0;
+  const column = Math.floor(index / 7);
   const highlightColor = value >= 4 ? "var(--heat-spark)" : `var(--heat-${Math.min(value + 2, 5)})`;
-  const basePeak = isElite ? 0.5 : value >= 4 ? 0.38 : value >= 2 ? 0.26 : 0.16;
-  const baseDuration = isElite ? "8.8s" : value >= 4 ? "9.4s" : value >= 2 ? "10.2s" : "11.2s";
+  const pulseScale = isElite ? 1.05 : value >= 4 ? 1.04 : value >= 2 ? 1.025 : 1.012;
+  const pulseBrightness = isElite ? 1.42 : value >= 4 ? 1.32 : value >= 2 ? 1.2 : 1.1;
+  const basePeak = isElite ? 0.72 : value >= 4 ? 0.56 : value >= 2 ? 0.38 : 0.24;
+  const baseDuration = isElite ? "2.8s" : value >= 4 ? "3.1s" : value >= 2 ? "3.4s" : "3.8s";
   const shouldGlow = value >= 3 || (value >= 2 && index % 7 === 0);
-  const glowPeak = isElite ? 0.62 : value >= 4 ? 0.48 : value >= 2 ? 0.32 : 0.18;
-  const glowDuration = isElite ? "7.8s" : value >= 4 ? "8.4s" : "9.8s";
-  const flowDelay = -((index % 53) * 105 + ((index * 97) % 260));
+  const glowPeak = isElite ? 0.78 : value >= 4 ? 0.64 : value >= 2 ? 0.44 : 0.26;
+  const glowDuration = isElite ? "2.7s" : value >= 4 ? "3s" : "3.6s";
+  const flowDelay = -(column * 90 + (index % 7) * 24 + ((index * 97) % 120));
   const tooltip = value === 0 ? "No activity" : `${value} activity ${value === 5 ? "peak" : "level"}`;
 
   return (
     <div
-      className={`heat-cell relative overflow-visible aspect-square border ${borderClass}`}
-      style={{ backgroundColor: `var(--heat-${value})` }}
+      className={`heat-cell ${isActive ? "heat-cell-living" : "heat-cell-zero"} relative overflow-visible aspect-square border ${borderClass}`}
+      style={{
+        backgroundColor: `var(--heat-${value})`,
+        color: highlightColor,
+        "--heat-delay": `${randomDelay}ms`,
+        "--heat-duration": baseDuration,
+        "--heat-pulse-scale": pulseScale,
+        "--heat-pulse-brightness": pulseBrightness,
+      } as React.CSSProperties}
       tabIndex={0}
       aria-label={tooltip}
     >
