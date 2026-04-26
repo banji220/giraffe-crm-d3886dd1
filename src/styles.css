@@ -193,6 +193,39 @@
     }
   }
 
+  @keyframes heat-cell-flow {
+    0%, 100% {
+      opacity: 0;
+    }
+    38% {
+      opacity: var(--heat-flow-peak, 0.12);
+    }
+    58% {
+      opacity: calc(var(--heat-flow-peak, 0.12) * 0.45);
+    }
+  }
+
+  .heat-cell {
+    transition: transform 140ms ease-out, filter 140ms ease-out, z-index 0ms linear 140ms;
+  }
+
+  .heat-cell:hover,
+  .heat-cell:focus-visible,
+  .heat-cell:active {
+    filter: brightness(1.18) saturate(1.08);
+    transform: scale(1.16);
+    z-index: 10;
+    transition-delay: 0ms;
+  }
+
+  .heat-cell-flow,
+  .heat-cell-hover-glow {
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    pointer-events: none;
+  }
+
   .heat-cell-base {
     position: absolute;
     inset: 0;
@@ -213,6 +246,38 @@
     will-change: opacity;
   }
 
+  .heat-cell-flow {
+    animation: heat-cell-flow 9.6s ease-in-out infinite;
+    animation-delay: var(--heat-flow-delay, 0ms);
+    opacity: 0;
+    will-change: opacity;
+  }
+
+  .heat-cell-hover-glow {
+    opacity: 0;
+    box-shadow: inset 0 0 0 1px currentColor;
+    transition: opacity 140ms ease-out;
+  }
+
+  .heat-cell:hover .heat-cell-hover-glow,
+  .heat-cell:focus-visible .heat-cell-hover-glow,
+  .heat-cell:active .heat-cell-hover-glow {
+    opacity: 0.42;
+  }
+
+  .heat-cell-tooltip {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity 140ms ease-out, transform 140ms ease-out;
+  }
+
+  .heat-cell:hover .heat-cell-tooltip,
+  .heat-cell:focus-visible .heat-cell-tooltip,
+  .heat-cell:active .heat-cell-tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
   .heat-cell-elite {
     position: absolute;
     inset: -1px;
@@ -226,6 +291,7 @@
   @media (prefers-reduced-motion: reduce) {
     .heat-cell-base,
     .heat-cell-glow,
+    .heat-cell-flow,
     .heat-cell-elite {
       animation: none;
     }
