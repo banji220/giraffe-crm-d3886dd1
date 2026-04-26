@@ -287,6 +287,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
   const randomDelay = ((index * 379) % 5200) - 5200;
   const isElite = value === 5;
+  const isActive = value > 0;
   const basePeak = isElite ? 0.2 : value >= 4 ? 0.16 : value >= 2 ? 0.1 : 0.06;
   const baseDuration = isElite ? "10.6s" : value >= 4 ? "9.8s" : value >= 2 ? "10.8s" : "12.4s";
   const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
@@ -303,9 +304,8 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
       aria-label={tooltip}
     >
       <span className="absolute inset-0 overflow-hidden">
-      {value > 0 ? (
         <span
-          className="heat-cell-base"
+          className={`heat-cell-base ${isActive ? "" : "heat-cell-static"}`}
           style={{
             color: `var(--heat-${Math.min(value + 1, 5)})`,
             "--heat-delay": `${randomDelay}ms`,
@@ -313,20 +313,16 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
             "--heat-duration": baseDuration,
           } as React.CSSProperties}
         />
-      ) : null}
-      {value > 0 ? (
         <span
-          className="heat-cell-flow"
+          className={`heat-cell-flow ${isActive ? "" : "heat-cell-static"}`}
           style={{
             color: `var(--heat-${Math.min(value + 1, 5)})`,
             "--heat-flow-delay": `${flowDelay}ms`,
             "--heat-flow-peak": value >= 4 ? 0.18 : 0.1,
           } as React.CSSProperties}
         />
-      ) : null}
-      {shouldGlow ? (
         <span
-          className="heat-cell-glow"
+          className={`heat-cell-glow ${shouldGlow ? "" : "heat-cell-static"}`}
           style={{
             color: `var(--heat-${Math.min(value + 1, 5)})`,
             "--heat-delay": `${randomDelay - 900}ms`,
@@ -334,16 +330,13 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
             "--heat-glow-duration": glowDuration,
           } as React.CSSProperties}
         />
-      ) : null}
-      {isElite ? (
         <span
-          className="heat-cell-elite"
+          className={`heat-cell-elite ${isElite ? "" : "heat-cell-static"}`}
           style={{
             color: "var(--heat-5)",
             "--heat-delay": `${randomDelay - 1600}ms`,
           } as React.CSSProperties}
         />
-      ) : null}
       <span className="heat-cell-hover-glow" style={{ color: `var(--heat-${Math.max(value, 1)})` }} />
       </span>
       <span className="heat-cell-tooltip pointer-events-none absolute left-1/2 bottom-full mb-1.5 whitespace-nowrap border border-foreground bg-background px-2 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-foreground shadow-card">
