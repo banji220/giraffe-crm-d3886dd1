@@ -287,6 +287,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
   const shouldGlow = value > 0 && (value >= 4 || index % 5 === 0);
   const glowPeak = value >= 4 ? 0.24 : value >= 2 ? 0.16 : 0.1;
+  const isElite = value === 5;
 
   return (
     <div
@@ -300,6 +301,15 @@ function HeatCell({ value, index, borderClass }: { value: number; index: number;
             color: `var(--heat-${Math.min(value + 1, 5)})`,
             "--heat-delay": `${(index % 17) * 180}ms`,
             "--heat-glow-peak": glowPeak,
+          } as React.CSSProperties}
+        />
+      ) : null}
+      {isElite ? (
+        <span
+          className="heat-cell-elite"
+          style={{
+            color: "var(--heat-5)",
+            "--heat-delay": `${(index % 19) * 220}ms`,
           } as React.CSSProperties}
         />
       ) : null}
