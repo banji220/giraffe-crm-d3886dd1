@@ -158,6 +158,18 @@
 }
 
 @layer utilities {
+  @keyframes heat-cell-base-pulse {
+    0%, 100% {
+      opacity: 0;
+    }
+    42% {
+      opacity: var(--heat-base-peak, 0.08);
+    }
+    68% {
+      opacity: calc(var(--heat-base-peak, 0.08) * 0.45);
+    }
+  }
+
   @keyframes heat-cell-glow {
     0%, 100% {
       opacity: 0;
@@ -181,11 +193,21 @@
     }
   }
 
+  .heat-cell-base {
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    animation: heat-cell-base-pulse var(--heat-duration, 8.8s) ease-in-out infinite;
+    animation-delay: var(--heat-delay, 0ms);
+    pointer-events: none;
+    will-change: opacity;
+  }
+
   .heat-cell-glow {
     position: absolute;
     inset: 0;
     background: currentColor;
-    animation: heat-cell-glow 7.2s ease-in-out infinite;
+    animation: heat-cell-glow var(--heat-glow-duration, 7.2s) ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
     will-change: opacity;
@@ -202,6 +224,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .heat-cell-base,
     .heat-cell-glow,
     .heat-cell-elite {
       animation: none;
