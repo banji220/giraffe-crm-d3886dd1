@@ -158,6 +158,28 @@
 }
 
 @layer utilities {
+  @keyframes heat-cell-glow {
+    0%, 100% {
+      filter: brightness(1) saturate(1);
+      box-shadow: none;
+    }
+    45% {
+      filter: brightness(1.14) saturate(1.08);
+      box-shadow: 0 0 10px -5px currentColor;
+    }
+  }
+
+  .heat-cell-active {
+    animation: heat-cell-glow 4.8s ease-in-out infinite;
+    color: color-mix(in oklab, var(--primary) 70%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heat-cell-active {
+      animation: none;
+    }
+  }
+
   .text-brand {
     color: var(--brand);
   }
