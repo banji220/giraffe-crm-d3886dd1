@@ -285,7 +285,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 }
 
 function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
-  const shouldGlow = value > 0 && (value >= 4 || index % 5 === 0);
+  const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
   const glowPeak = value >= 4 ? 0.24 : value >= 2 ? 0.16 : 0.1;
   const isElite = value === 5;
 
