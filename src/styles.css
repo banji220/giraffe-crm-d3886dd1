@@ -87,6 +87,7 @@
     --heat-3: oklch(0.72 0.18 58);
     --heat-4: oklch(0.6 0.22 42);
     --heat-5: oklch(0.48 0.26 28);
+    --heat-spark: oklch(0.88 0.16 80);
     --gradient-heat: linear-gradient(135deg,
       var(--heat-1) 0%,
       var(--heat-2) 30%,
@@ -162,10 +163,13 @@
     0%, 100% {
       opacity: 0;
     }
-    42% {
+    34% {
+      opacity: calc(var(--heat-base-peak, 0.18) * 0.55);
+    }
+    56% {
       opacity: var(--heat-base-peak, 0.08);
     }
-    68% {
+    76% {
       opacity: calc(var(--heat-base-peak, 0.08) * 0.45);
     }
   }
@@ -197,10 +201,13 @@
     0%, 100% {
       opacity: 0;
     }
-    38% {
+    22% {
+      opacity: calc(var(--heat-flow-peak, 0.12) * 0.42);
+    }
+    46% {
       opacity: var(--heat-flow-peak, 0.12);
     }
-    58% {
+    70% {
       opacity: calc(var(--heat-flow-peak, 0.12) * 0.45);
     }
   }
@@ -230,6 +237,7 @@
     position: absolute;
     inset: 0;
     background: currentColor;
+    mix-blend-mode: screen;
     animation: heat-cell-base-pulse var(--heat-duration, 8.8s) ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
@@ -238,8 +246,10 @@
 
   .heat-cell-glow {
     position: absolute;
-    inset: 0;
+    inset: -1px;
     background: currentColor;
+    box-shadow: 0 0 10px -4px currentColor;
+    mix-blend-mode: screen;
     animation: heat-cell-glow var(--heat-glow-duration, 7.2s) ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
@@ -249,6 +259,7 @@
   .heat-cell-flow {
     animation: heat-cell-flow 9.6s ease-in-out infinite;
     animation-delay: var(--heat-flow-delay, 0ms);
+    mix-blend-mode: screen;
     opacity: 0;
     will-change: opacity;
   }
@@ -282,7 +293,7 @@
     position: absolute;
     inset: -2px;
     border: 1px solid currentColor;
-    box-shadow: 0 0 8px -4px currentColor;
+    box-shadow: 0 0 14px -3px currentColor;
     animation: heat-cell-elite 9.2s ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
