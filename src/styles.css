@@ -185,11 +185,11 @@
   @keyframes heat-cell-elite {
     0%, 100% {
       opacity: 0;
-      transform: scale(1);
+      transform: scale(0.94);
     }
     50% {
-      opacity: 0.28;
-      transform: scale(0.88);
+      opacity: 0.34;
+      transform: scale(1.08);
     }
   }
 
@@ -280,9 +280,10 @@
 
   .heat-cell-elite {
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border: 1px solid currentColor;
-    animation: heat-cell-elite 8.4s ease-in-out infinite;
+    box-shadow: 0 0 8px -4px currentColor;
+    animation: heat-cell-elite 9.2s ease-in-out infinite;
     animation-delay: var(--heat-delay, 0ms);
     pointer-events: none;
     will-change: opacity, transform;

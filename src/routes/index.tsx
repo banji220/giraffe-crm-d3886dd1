@@ -286,12 +286,12 @@ function Stat({ n, label }: { n: string; label: string }) {
 
 function HeatCell({ value, index, borderClass }: { value: number; index: number; borderClass: string }) {
   const randomDelay = ((index * 379) % 5200) - 5200;
-  const basePeak = value >= 4 ? 0.16 : value >= 2 ? 0.1 : 0.06;
-  const baseDuration = value >= 4 ? "9.8s" : value >= 2 ? "10.8s" : "12.4s";
-  const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
-  const glowPeak = value >= 4 ? 0.34 : value >= 2 ? 0.22 : 0.14;
-  const glowDuration = value >= 4 ? "8.8s" : "10.4s";
   const isElite = value === 5;
+  const basePeak = isElite ? 0.2 : value >= 4 ? 0.16 : value >= 2 ? 0.1 : 0.06;
+  const baseDuration = isElite ? "10.6s" : value >= 4 ? "9.8s" : value >= 2 ? "10.8s" : "12.4s";
+  const shouldGlow = value >= 4 || (value >= 2 && index % 11 === 0);
+  const glowPeak = isElite ? 0.42 : value >= 4 ? 0.34 : value >= 2 ? 0.22 : 0.14;
+  const glowDuration = isElite ? "9.6s" : value >= 4 ? "8.8s" : "10.4s";
   const flowDelay = (index % 53) * 105 + ((index * 97) % 260);
   const tooltip = value === 0 ? "No activity" : `${value} activity ${value === 5 ? "peak" : "level"}`;
 
