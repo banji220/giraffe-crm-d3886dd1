@@ -308,11 +308,18 @@
     will-change: auto;
   }
 
+  .heat-cell-zero {
+    animation: none;
+    filter: none;
+    will-change: transform;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .heat-cell-base,
     .heat-cell-glow,
     .heat-cell-flow,
-    .heat-cell-elite {
+    .heat-cell-elite,
+    .heat-cell-living {
       animation: none;
     }
   }
