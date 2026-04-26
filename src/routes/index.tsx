@@ -186,7 +186,7 @@ function ContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/15"
+            className={`aspect-square border border-foreground/15 ${v > 0 ? "heat-cell-active" : ""}`}
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
@@ -257,8 +257,8 @@ function MobileContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20"
-            style={{ backgroundColor: `var(--heat-${v})` }}
+            className={`aspect-square border border-foreground/20 ${v > 0 ? "heat-cell-active" : ""}`}
+            style={{ backgroundColor: `var(--heat-${v})`, animationDelay: `${(i % 13) * 120}ms` }}
           />
         ))}
       </div>
@@ -434,7 +434,7 @@ function BigContributionGrid() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/15"
+            className={`aspect-square border border-foreground/15 ${v > 0 ? "heat-cell-active" : ""}`}
             style={{ backgroundColor: `var(--heat-${v})` }}
           />
         ))}
@@ -483,8 +483,8 @@ function MobileHeatmap() {
         {cells.map((v, i) => (
           <div
             key={i}
-            className="aspect-square border border-foreground/20"
-            style={{ backgroundColor: `var(--heat-${v})` }}
+            className={`aspect-square border border-foreground/20 ${v > 0 ? "heat-cell-active" : ""}`}
+            style={{ backgroundColor: `var(--heat-${v})`, animationDelay: `${(i % 13) * 120}ms` }}
           />
         ))}
       </div>
